@@ -830,7 +830,8 @@ section{
     position: absolute;
     left: calc(50% - 8px);
     border-radius: 50%;
-    top: 10px;
+    top: 12px;
+    
 }
 
 .timeline-date {

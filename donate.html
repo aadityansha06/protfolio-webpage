@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +57,7 @@
     background-size: cover; /* Ensures the image covers the entire section */
     position: relative;
     padding: 3rem 0;
-    filter: brightness(0.4); /* Lower the brightness of the background */
+    filter: brightness(0.5); /* Lower the brightness of the background */
 }
 
 .donate-container {
@@ -77,12 +76,14 @@
 .donate h2 {
     font-size: 2.5rem;
     color: white;
+    font-weight: 600;
     margin-bottom: 1rem;
 }
 
 .donate p {
     font-size: 1.2rem;
     color: white;
+    font-weight: 600;
     margin-bottom: 1.5rem;
 }
 
@@ -91,8 +92,9 @@
 }
 
 .qr-image {
-    width: 24vh; /* Adjust size of the QR code */
-    height: 26vh;
+    width: 28vh; /* Adjust size of the QR code */
+    height: 30vh;
+    
     border-radius: 1rem;
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.7); /* Glow effect for the QR code */
     object-fit: cover;
@@ -161,168 +163,4 @@
   });
     </script>
 </body>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate-AADITYANSHA</title>
-
-    <style>
-        :root{
-    --main-color: rgba(250, 31, 31, 0.823);
-}
-*{
-    margin: 0;
-    padding: 0;
-    position: none;
-    scroll-behavior: smooth;
-    font-family:"Lexend Giga", serif ;
-    
-        scroll-behavior: smooth; /* Consider removing or adjusting this */
-    
-    
-}
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black; /* Background color while loading */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* Ensure it appears above other elements */
-  }
-  #loader {
-    width: 30%; /* Adjust size as needed */
-  }
-::-webkit-scrollbar{
-    width: 12px;
- }
- 
- ::-webkit-scrollbar-thumb{
-    background-color: var(--main-color);
- }
- ::-webkit-scrollbar-track{
-    background-color: black;
-    width: 300px;
-    border-radius: 20px;
- }
-        /* Donate Section */
-.donate {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: url('pic/main-img.jpeg') no-repeat center center; /* Add your background image */
-    background-size: cover; /* Ensures the image covers the entire section */
-    position: relative;
-    padding: 3rem 0;
-    filter: brightness(0.4); /* Lower the brightness of the background */
-}
-
-.donate-container {
-    background: rgba(255, 255, 255, 0.2); /* Light semi-transparent background */
-    backdrop-filter: blur(10px); /* Apply blur effect */
-    padding: 2rem 3rem;
-    border-radius: 1.5rem;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    max-width: 400px;
-    width: 100%;
-    z-index: 1; /* Ensures the content stays in front */
-    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for the box shadow */
-}
-
-.donate h2 {
-    font-size: 2.5rem;
-    color: white;
-    margin-bottom: 1rem;
-}
-
-.donate p {
-    font-size: 1.2rem;
-    color: white;
-    margin-bottom: 1.5rem;
-}
-
-.qr-container {
-    margin: 1.5rem 0;
-}
-
-.qr-image {
-    width: 24vh; /* Adjust size of the QR code */
-    height: 26vh;
-    border-radius: 1rem;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7); /* Glow effect for the QR code */
-    object-fit: cover;
-}
-
-.upi-id {
-    font-size: 1rem;
-    color: white;
-    margin-bottom: 1.5rem;
-}
-
-.donate-btn {
-    text-decoration: none;
-    display: inline-block;
-    padding: 1rem 2rem;
-    background: var(--main-color);
-    box-shadow: 0 0 25px var(--main-color);
-    border-radius: 5rem;
-    font-size: 1.5rem;
-    color: black;
-    font-weight: 600;
-    transition: 0.3s ease-in-out;
-}
-
-.donate-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 50px var(--main-color);
-    background-color: black;
-    border: 3px solid;
-    color: var(--main-color);
-}
-
-/* Hover effect for the donate card */
-.donate-container:hover {
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9); /* Red glow effect */
-    transform: scale(1.05); /* Slight zoom effect */
-}
-
-    </style>
-</head>
-<body>
-    <div id="preloader">
-        <img src="pic/load.gif" alt="Loading..." id="loader">
-      </div>
-
-    <section class="donate" id="donate">
-        <div class="donate-container">
-            <h2>Support Me</h2>
-            <p>Donate via UPI or scan the QR code below.</p>
-            <div class="qr-container">
-                <img src="pic/qr.jpg" alt="Donate QR Code" class="qr-image">
-            </div>
-            <p class="upi-id">UPI ID:pkumariverma42@okaxis</p>
-            <a href="upi://pay?pa=pkumariverma42@okaxis&pn=Aadityansha&mc=1234&tid=5678&url=https://your-website.com" class="donate-btn">Donate Now</a>
-
-        </div>
-    </section>
-    
-    <script>
-        window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    const mainContent = document.getElementById('main-content');
-  
-    preloader.style.display = 'none';
-    mainContent.style.display = 'block';
-  });
-    </script>
-</body>
->>>>>>> 378cc2c70801f24936e8bd382cacef6cac5c2c97
 </html>
