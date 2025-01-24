@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin: 0;
     padding: 0;
@@ -439,4 +440,447 @@ section{
     background-color: black;
     width: 300px;
     border-radius: 20px;
+=======
+*{
+    margin: 0;
+    padding: 0;
+    position: none;
+    scroll-behavior: smooth;
+    font-family:"Lexend Giga", serif ;
+    
+        scroll-behavior: smooth; /* Consider removing or adjusting this */
+    
+    
+}
+
+:root{
+    --main-color: rgba(250, 31, 31, 0.823);
+}
+
+html{
+    font-size: 60%;
+    overflow-x: hidden;
+}
+body{
+    background: black;
+    color: #ffff;
+
+}
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* Background color while loading */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it appears above other elements */
+  }
+  #loader {
+    width: 30%; /* Adjust size as needed */
+  }
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 2rem;
+    /* 16px font size= 1rem*/
+   
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(7px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+.logo{
+    margin-left: 2rem;
+    font-size: 2rem;
+    color: white;
+    font-weight: 800;
+    z-index: 999;
+  /* to remove underline*/
+  text-decoration: none; 
+    transition: text-decoration 0.5s ease-in;
+}
+
+.logo:hover{
+    text-decoration: none;
+    cursor: pointer;
+   
+    transform: scale(1.1);
+}
+.logo span{
+    color: var(--main-color);
+    text-shadow: 0 0 20px rgb(251, 0, 0);
+}
+
+.navbar a {
+    z-index: 999;
+    position: relative;
+    font-size: 1.5rem;
+    color: #ffff;
+    margin-left: 4rem;
+    margin-right: 2rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+}
+
+.navbar a::after {
+    content: ""; /* Creates the underline effect */
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Position slightly below the text */
+    width: 0%; /* Initially hidden */
+    height: 2px; /* Thickness of the underline */
+    background: var(--main-color); /* Underline color */
+    transition: width 0.3s ease-in-out; /* Smooth width expansion */
+}
+
+.navbar a:hover::after {
+    width: 100%; /* Expands the underline on hover */
+}
+
+.navbar a:hover {
+    color: var(--main-color); /* Optional: Change the text color on hover */
+}
+
+#menu-icon{
+    font-size: 3.6rem;
+    color: var(--main-color);
+    display: none;
+}
+section{
+    min-height: 100vh;
+    padding: 10rem 12% 10rem;
+
+}
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between text and image */
+    gap: 2rem; /* Adjust spacing between text and image */
+    padding: 0 2rem; /* Add padding for better alignment */
+}
+.home-content {
+    flex: 1; /* Let the content take up available space */
+    text-align: left;
+}
+
+.home-content span{
+    
+    color: var(--main-color);
+    text-shadow: 0 0 20px rgba(251, 0, 0,0.8);
+}
+
+
+.home-content h3{
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    font-size: 3.5rem;
+}
+.home-content h1{
+    font-size: 7rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    line-height: 1;
+}
+
+.home-img {
+    flex: 1; /* Let the image take up available space */
+    display: flex;
+    justify-content: flex-end; /* Align the image to the right */
+    align-items: center;
+}
+
+.home-img img {
+    margin-right: 5vh;
+    width: 45vh; /* Set the desired width */
+    height: 45vh; /* Keep height same as width for a perfect circle */
+    border-radius: 50%; /* Makes the image circular */
+    box-shadow: 0 0 15px rgba(251, 0, 0,0.9); /* Add a glow effect */
+    object-fit: cover; /* Ensures the image scales properly */
+    transition: transform ease 0.3s;
+}
+.home-img img:hover{
+    cursor: pointer;
+    transform: scale(1.3);
+    box-shadow: 0 0 35px rgba(251, 0, 0,0.9);
+}
+.home-content p{
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.8;
+    max-width: 1000px;
+
+}
+.social-icon a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    background: transparent;
+    border: 2px solid var(--main-color);
+    font-size: 2.5rem;
+    border-radius: 50%;
+    color: var(--main-color);
+    margin: 3rem 2rem 3rem 0;
+    transition: 0.3s ease-in-out;
+
+}
+.social-icon a:hover{
+    color: #ffff;
+    cursor: pointer;
+     box-shadow: 0 0 15px rgba(251, 0, 0,0.9);
+    transform: scale(1.2)translateZ(10px);
+    background-color: rgba(231, 0, 0, 0.89);
+
+}
+.btn{
+    text-decoration: none;
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    background: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+    border-radius: 5rem;
+    font-size: 1.5rem;
+    color: black;
+    border: 2px solid transparent;
+    letter-spacing: 0.2rem;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    transition:0.3s ;
+}
+.btn:hover{
+    transform: scale(1.2);
+    box-shadow: 0 0 50px var(--main-color);
+    background-color: black;
+    border: 3px solid;
+    color: var(--main-color);
+}
+.btn-group{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+.text-animation span{
+    position: relative;
+}
+.text-animation span::before{
+    content: "DEVELOPER";
+    color: var(--main-color);
+    animation: words 10s infinite;
+}
+.text-animation span::after{
+    content: "";
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-left: 3px solid black;
+    right: -8px;
+    animation: cursor 0.6s infinite, typing 10s steps(14)
+    infinite;
+}
+@keyframes cursor{
+    to{
+        border-left: 2px solid var(--main-color);
+    }
+}
+@keyframes words{
+    0%,
+    20%{
+        content:"WEB DESIGNER";
+    }
+    21%,
+    40%{
+        content: "BACKEND DEVELOPER";
+
+    }
+    41%,
+    60%{
+        content: "SOFTWARE TESTER";
+    }
+    61%,
+    80%{
+        content: "CYBER SECURITY";
+    }81%,
+    100%{
+        content: "STUDENT";
+    }
+
+}
+@keyframes typing{
+    10%,
+    15%,
+    30%,
+    35%,
+    50%,
+    55%,
+    70%,
+    75%,
+    90%,
+    95%{
+        width: 0;
+    }
+    5%,
+    20%,
+    25%,
+    40%,
+    45%,
+    60%,
+    65%,
+    80%,
+    85%{
+        width: 100%;
+    }
+}
+.heading{
+    filter: brightness(0.7);
+    font-size: 8rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 5rem 0;
+}
+.education {
+    padding-top: 12rem;
+    padding: 100px 15px;
+    position: relative;
+    z-index: 0; /* Content stays above the background */
+    color: white;
+     /* Full viewport height */
+    box-sizing: border-box; /* Ensures padding doesn't affect height */
+    overflow: hidden; /* Prevent pseudo-element overflow */
+}
+
+.education::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('pic/bg-image.jpg') no-repeat center center; /* Background image */
+    background-size: cover; /* Scales proportionally */
+    filter: brightness(0.1); /* Darkens the background */
+    z-index: -1; /* Places the background behind the content */
+    animation: moveBackground 10s linear infinite; /* Optional background animation */
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.timeline-items {
+    z-index: 1; /* Ensures the timeline is above the background */
+    max-width: 1700px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.timeline-items::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background-color: var(--main-color);
+    left: calc(50% - 1px);
+}
+
+.timeline-item {
+    margin-bottom: 40px;
+    width: 100%;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+    padding-right: calc(0% + 30px);
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    padding-left: calc(0% + 30px);
+}
+
+.timeline-dot {
+    z-index: 999;
+    height: 21px;
+    width: 21px;
+    background-color: var(--main-color);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9),
+        0 0 25px rgba(255, 0, 0, 0.9); /* Red glow effect */
+    position: absolute;
+    left: calc(50% - 8px);
+    border-radius: 50%;
+    top: 10px;
+}
+
+.timeline-date {
+    filter: brightness(0.8);
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    margin: 6px 10px 0 20px;
+}
+
+.timeline-content h3 {
+    filter: brightness(0.8);
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin: 0 0 10px;
+}
+
+.timeline-content p {
+    filter: brightness(0.7);
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 300;
+    color: white;
+}
+ .timeline-content{
+    background-color: black;
+    border: 3px solid var(--main-color);
+    padding: 30px 50px;
+    border-radius: 4rem;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9);
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+ }
+ .timeline-content:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--main-color);
+
+ }
+ ::-webkit-scrollbar{
+    width: 12px;
+ }
+ 
+ ::-webkit-scrollbar-thumb{
+    background-color: var(--main-color);
+ }
+ ::-webkit-scrollbar-track{
+    background-color: black;
+    width: 300px;
+    border-radius: 20px;
+>>>>>>> 378cc2c70801f24936e8bd382cacef6cac5c2c97
  }
