@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 *{
     margin: 0;
     padding: 0;
@@ -440,7 +440,7 @@ section{
     background-color: black;
     width: 300px;
     border-radius: 20px;
-=======
+
 *{
     margin: 0;
     padding: 0;
@@ -882,5 +882,6 @@ section{
     background-color: black;
     width: 300px;
     border-radius: 20px;
->>>>>>> 378cc2c70801f24936e8bd382cacef6cac5c2c97
+
+ }
  }
