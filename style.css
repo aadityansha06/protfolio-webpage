@@ -1,5 +1,6 @@
 
 *{
+   
     margin: 0;
     padding: 0;
     position: none;
@@ -23,6 +24,7 @@ body{
     background: black;
     color: #ffff;
    
+   
 
 }
 
@@ -41,67 +43,9 @@ body{
   #loader {
     width: 30%; /* Adjust size as needed */
   }
-   .cursor {
-            position: absolute;
-            width: 40px;  /* Adjust based on your PNG size */
-            height: 40px; /* Adjust based on your PNG size */
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            animation: twinkle 1s infinite alternate; /* Twinkling effect */
-        }
-
-        @keyframes twinkle {
-            0% {
-                transform: scale(1) translate(-50%, -50%);
-                opacity: 1;
-                box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
-            }
-            50% {
-                transform: scale(1.2) translate(-50%, -50%);
-                opacity: 0.7;
-                box-shadow: 0 0 25px rgba(255, 0, 0, 1);
-            }
-            100% {
-                transform: scale(1) translate(-50%, -50%);
-                opacity: 1;
-                box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
-            }
-        }
-
-        .blood {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: red;
-            border-radius: 50%;
-            opacity: 1;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            animation: bloodAnimation 1s forwards;
-        }
-
-        @keyframes bloodAnimation {
-            0% {
-                transform: scale(1) translate(-50%, -50%);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(3) translate(-50%, -50%);
-                opacity: 0;
-            }
-        }
-
-        /* Example for interactive elements */
-        .button {
-            margin: 50px;
-            padding: 20px;
-            background-color: #444;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
+   
+  
+  
 .header{
     position: fixed;
     top: 0;
@@ -967,6 +911,7 @@ section{
     margin: 2rem;
  }
  .Skills{
+    z-index: 1;
      width: 32rem;
      margin: 4rem auto;
      padding-top: 1rem;
@@ -1013,4 +958,155 @@ section{
     transition: width 2s ease-in-out;
 }
 
-/* Remove the global animation and rely on JavaScript for setting widths */
+
+
+/* CSS for animated background effect */
+
+.contact {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+    position: relative;
+  
+    background: transparent;
+    padding: 50px 20px;
+  }
+  
+  .contact::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+ 
+    background: url('pic/bg-image-2.png') no-repeat center center/cover;
+    opacity: 0;
+    background-size:50%;
+    filter: brightness(0.3);
+    z-index: -1;
+    transform: scale(1.2);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .contact.in-view::before {
+    opacity: 1;
+    transform: scale(1);
+    animation: backgroundMove 20s linear infinite;
+  }
+  
+  /* Smooth background animation */
+  @keyframes backgroundMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @keyframes backgroundMove  {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.contact h2 {
+    text-align: center;
+    font-size: 3.5rem;
+    color: #fff;
+    margin-bottom: 3rem;
+  }
+  
+  .contact h2 span {
+    color: rgba(255, 0, 0, 0.9); /* Red glow effect for "Me" */
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.9),
+                 0 0 20px rgba(255, 0, 0, 0.7),
+                 0 0 30px rgba(255, 0, 0, 0.5);
+  }
+  
+    .contact form textarea {
+        width: 100%;
+        height: 12rem; /* Adjust the height to be relative to the root font size */
+        padding: 2rem 4rem; /* More vertical padding (top/bottom) than horizontal (left/right) */
+        font-size: 1.2rem;
+       
+        color: #fff;
+        background: rgba(0, 0, 0, 0.8);
+        border: 2px solid rgba(255, 0, 0, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+        outline: none;
+        resize: none; /* Prevent resizing */
+    }
+    .contact form textarea::placeholder {
+        color: rgba(255, 255, 255, 0.702); /* Light white color with opacity */
+        font-size: 1.6rem; 
+        align-items: center;/* Adjust the size of the placeholder text */
+        font-family: 'Arial', sans-serif; /* Change the font */
+        font-style: italic; /* Make the placeholder text italic */
+        padding-left: 10px; /* Add space to the left of the placeholder text */
+        opacity: 0.8; /* Adjust opacity for a more subtle effect */
+    }
+    
+      /* Prevent resizing */
+
+
+  /* Contact Form */
+  .contact form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 2;
+  }
+  
+  .contact form .input-box {
+    flex: 1 1 calc(50% - 1rem);
+    position: relative;
+    margin-right: 2rem;
+  }
+  
+  .contact form textarea {
+    flex: 1 1 100%;
+  }
+  
+  .contact form .input-box input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 0, 0, 0.9); /* Red glow for borders */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+    outline: none;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .contact form .input-box input:focus,
+  .contact form textarea:focus {
+    margin-right: 30rem;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9), 0 0 25px rgba(255, 0, 0, 0.6);
+    transform: scale(1.03);
+  }
+  
+  .contact form .btn {
+    flex: 1 1 100%;
+    padding: 15px 20px;
+    margin-top: 10rem;
+  }
+  

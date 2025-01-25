@@ -7,6 +7,31 @@ window.addEventListener('load', () => {
   });
 
 
+  const cursor = document.getElementById('cursor');
+const trail = document.getElementById('trail');
+
+// Update cursor and trail positions on mousemove
+document.addEventListener('mousemove', (e) => {
+  const x = e.clientX;
+  const y = e.clientY;
+
+  // Update cursor position
+  cursor.style.transform = `translate(${x}px, ${y}px)`;
+
+  // Update trail position
+  trail.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+// Ensure the cursor hides when not moving
+document.addEventListener('mouseleave', () => {
+  cursor.style.opacity = '0';
+  trail.style.opacity = '0';
+});
+
+document.addEventListener('mouseenter', () => {
+  cursor.style.opacity = '1';
+  trail.style.opacity = '1';
+});
 
 
 
@@ -52,3 +77,47 @@ bars.forEach(bar => {
 });
 
 
+const contactSection = document.querySelector('.contact');
+
+window.addEventListener('scroll', () => {
+  const sectionTop = contactSection.getBoundingClientRect().top;
+  const sectionHeight = contactSection.offsetHeight;
+  const windowHeight = window.innerHeight;
+
+  if (sectionTop <= windowHeight && sectionTop + sectionHeight > 0) {
+    contactSection.classList.add('in-view');
+  } else {
+    contactSection.classList.remove('in-view');
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("contact-form");
+
+  // Listen for the form submit event
+  form.addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const formData = new FormData(form); // Collect form data
+
+      // Send form data using Fetch API (AJAX)
+      fetch(form.action, {
+          method: "POST",
+          body: formData
+      })
+      .then(response => {
+          if (response.ok) {
+              // If successful, display a success message
+              alert("Message sent successfully!");
+              form.reset(); // Reset the form fields
+          } else {
+              // If there's an error, display an error message
+              alert("Something went wrong. Please try again.");
+          }
+      })
+      .catch(error => {
+          alert("Error: " + error.message); // Handle network errors
+      });
+  });
+});
