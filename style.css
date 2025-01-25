@@ -22,8 +22,10 @@ html{
 body{
     background: black;
     color: #ffff;
+   
 
 }
+
 #preloader {
     position: fixed;
     top: 0;
@@ -39,6 +41,66 @@ body{
   #loader {
     width: 30%; /* Adjust size as needed */
   }
+   .cursor {
+            position: absolute;
+            width: 40px;  /* Adjust based on your PNG size */
+            height: 40px; /* Adjust based on your PNG size */
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            animation: twinkle 1s infinite alternate; /* Twinkling effect */
+        }
+
+        @keyframes twinkle {
+            0% {
+                transform: scale(1) translate(-50%, -50%);
+                opacity: 1;
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+            }
+            50% {
+                transform: scale(1.2) translate(-50%, -50%);
+                opacity: 0.7;
+                box-shadow: 0 0 25px rgba(255, 0, 0, 1);
+            }
+            100% {
+                transform: scale(1) translate(-50%, -50%);
+                opacity: 1;
+                box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+            }
+        }
+
+        .blood {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            opacity: 1;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            animation: bloodAnimation 1s forwards;
+        }
+
+        @keyframes bloodAnimation {
+            0% {
+                transform: scale(1) translate(-50%, -50%);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3) translate(-50%, -50%);
+                opacity: 0;
+            }
+        }
+
+        /* Example for interactive elements */
+        .button {
+            margin: 50px;
+            padding: 20px;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
 .header{
     position: fixed;
@@ -744,13 +806,16 @@ section{
     }
 }
 .heading{
-    filter: brightness(0.7);
+    
+    filter: brightness(0.8);
     font-size: 8rem;
     font-weight: 700;
     text-align: center;
     margin: 5rem 0;
 }
+
 .education {
+    
     padding-top: 12rem;
     padding: 100px 15px;
     position: relative;
@@ -762,6 +827,7 @@ section{
 }
 
 .education::before {
+   
     content: "";
     position: absolute;
     top: 0;
@@ -886,3 +952,65 @@ section{
 
  }
  }
+
+ .Skills h1{
+    text-align: center;
+    font-size: 4rem;
+    filter: brightness(0.8);
+    font-weight: 700;
+   
+    pointer-events: none; 
+   
+ }
+ .Skills h3{
+    margin-left: 1rem;
+    margin: 2rem;
+ }
+ .Skills{
+     width: 32rem;
+     margin: 4rem auto;
+     padding-top: 1rem;
+     padding-left: 30rem;
+     padding-right: 30rem;
+     padding-bottom: 1.8rem;
+    color: #ffff;
+    
+
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9),
+    0 0 25px rgba(255, 0, 0, 0.9);
+    border-radius:4rem;
+    
+ }
+ .Skills li{
+    margin: 2rem 0;
+    padding: 0.8rem;
+ }
+ /* Bar container */
+/* Bar container */
+.bar {
+    background: rgba(18, 18, 18, 0.9);
+    display: block;
+    height: 1.5rem;
+    border: 1px solid rgba(45, 44, 44, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(8, 7, 7, 0.894),
+    0 0 25px rgba(110, 108, 108, 0.709);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.bar:hover {
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.6), 0 0 25px rgba(255, 0, 0, 0.6);
+    transform: scale(1.2); /* Corrected scale property */
+}
+
+/* The inner span elements (progress bars) */
+.bar span {
+    height: 100%;  /* Full height of the container */
+    display: block;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.651) 0%, rgba(255, 0, 0, 1) 100%);
+    width: 0%;  /* Start from 0% width */
+    transition: width 2s ease-in-out;
+}
+
+/* Remove the global animation and rely on JavaScript for setting widths */
