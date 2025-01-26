@@ -90,34 +90,3 @@ window.addEventListener('scroll', () => {
     contactSection.classList.remove('in-view');
   }
 });
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  const form = document.getElementById("contact-form");
-
-  // Listen for the form submit event
-  form.addEventListener("submit", function(event) {
-      event.preventDefault(); // Prevent default form submission
-
-      const formData = new FormData(form); // Collect form data
-
-      // Send form data using Fetch API (AJAX)
-      fetch(form.action, {
-          method: "POST",
-          body: formData
-      })
-      .then(response => {
-          if (response.ok) {
-              // If successful, display a success message
-              alert("Message sent successfully!");
-              form.reset(); // Reset the form fields
-          } else {
-              // If there's an error, display an error message
-              alert("Something went wrong. Please try again.");
-          }
-      })
-      .catch(error => {
-          alert("Error: " + error.message); // Handle network errors
-      });
-  });
-});
