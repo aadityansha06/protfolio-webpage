@@ -90,3 +90,41 @@ window.addEventListener('scroll', () => {
     contactSection.classList.remove('in-view');
   }
 });
+
+
+
+
+
+const menuIcon = document.getElementById('menu-icon');
+const navbar = document.querySelector('.navbar');
+const navLinks = document.querySelectorAll('.navbar a');
+
+// Toggle the navbar when the menu icon is clicked
+menuIcon.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+});
+
+// Close the navbar when any link is clicked
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navbar.classList.remove('active');
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

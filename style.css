@@ -1,17 +1,10 @@
-
-*{
-   
+* {
     margin: 0;
     padding: 0;
-    position: none;
+    position: static; /* Corrected */
     scroll-behavior: smooth;
-    font-family:"Lexend Giga", serif ;
-    
-        scroll-behavior: smooth; /* Consider removing or adjusting this */
-    
-    
+    font-family: "Lexend Giga", serif;
 }
-
 :root{
     --main-color: rgba(250, 31, 31, 0.823);
 }
@@ -119,6 +112,7 @@ body{
     font-size: 3.6rem;
     color: var(--main-color);
     display: none;
+    margin-right: 3.5rem;
 }
 section{
     min-height: 100vh;
@@ -760,11 +754,12 @@ section{
 
 .education {
     
-    padding-top: 12rem;
-    padding: 100px 15px;
+    padding-top: 10vh;
+    padding: 5% 15%;
     position: relative;
     z-index: 0; /* Content stays above the background */
     color: white;
+    min-height: 100vh;
      /* Full viewport height */
     box-sizing: border-box; /* Ensures padding doesn't affect height */
     overflow: hidden; /* Prevent pseudo-element overflow */
@@ -796,10 +791,48 @@ section{
         background-position: 0% 0%;
     }
 }
+/* Keyframes for sliding in from the left */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
 
+/* Keyframes for sliding in from the right */
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Apply animations to timeline items */
+.timeline-item {
+    opacity: 0; /* Start invisible */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Slide in from the left for odd items */
+.timeline-item:nth-child(odd) {
+    animation: slideInFromLeft 0.8s ease forwards;
+}
+
+/* Slide in from the right for even items */
+.timeline-item:nth-child(even) {
+    animation: slideInFromRight 0.8s ease forwards;
+}
 .timeline-items {
     z-index: 1; /* Ensures the timeline is above the background */
-    max-width: 1700px;
+    max-width: 1500px;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -817,7 +850,9 @@ section{
 
 .timeline-item {
     margin-bottom: 40px;
-    width: 100%;
+    width: 30%;
+    padding-left: 2px;
+    padding-right: 3px;
     position: relative;
 }
 
@@ -838,9 +873,10 @@ section{
     box-shadow: 0 0 25px rgba(255, 0, 0, 0.9),
         0 0 25px rgba(255, 0, 0, 0.9); /* Red glow effect */
     position: absolute;
-    left: calc(50% - 8px);
+    left: calc(50% - 9px);
     border-radius: 50%;
-    top: 12px;
+    top: 10px;
+    bottom: 1px;
     
 }
 
@@ -867,21 +903,26 @@ section{
     font-weight: 300;
     color: white;
 }
- .timeline-content{
+
+.timeline-content {
     background-color: black;
     border: 3px solid var(--main-color);
-    padding: 30px 50px;
-    border-radius: 4rem;
+    padding: 20px 30px;  /* Adjusted padding to reduce space inside the box */
+    width: 30%;  /* Sets the width to 50% */
+    max-width: 200px; /* Limits the width to prevent it from getting too wide */
+    border-radius: 5rem;
     box-shadow: 0 0 25px rgba(255, 0, 0, 0.9);
     cursor: pointer;
     transition: 0.3s ease-in-out;
+    margin-left: 3rem;
+    margin-right: 1rem;/* Centers the box */
+}
 
- }
- .timeline-content:hover{
-    transform: scale(1.05);
+.timeline-content:hover {
+    transform: scale(1.02);
     box-shadow: 0 0 20px var(--main-color);
+}
 
- }
  ::-webkit-scrollbar{
     width: 12px;
  }
@@ -1010,17 +1051,7 @@ section{
     }
   }
   
-  @keyframes backgroundMove  {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 50% 50%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
+  
 
 .contact h2 {
     text-align: center;
@@ -1207,3 +1238,192 @@ section{
     font-weight: 500;
   text-align: center;
 }
+/* Global adjustments for smaller screens */
+@media(max-width:1285px) {
+    html {
+       font-size: 55%;
+    }
+    .home-img img {
+       max-width: 27vh;
+       max-height: 27vh;
+       margin-right: 10vh;
+    }
+    .education {
+       padding-top: 6rem;
+       padding: 3rem 2rem;
+    }
+    .timeline-item {
+       width: 90%;
+    }
+    .timeline-dot {
+       z-index: 999;
+       height: 20px;
+       width: 20px;
+       position: absolute;
+       left: calc(50% + 17px);
+       top: 10px;
+       bottom: 1px;
+    }
+ }
+ 
+ @media(max-width:1336px) {
+    .timeline-dot {
+       left: calc(50% + 35px);
+    }
+ }
+ @media(max-width:1180px){
+    .timeline-dot {
+        left: calc(50% + 28.1px);
+    }
+
+ }
+ @media(max-width:1024px) {
+    .timeline-date {
+        margin: 6px 10px 0px 70px;
+    }
+    .timeline-dot {
+       left: calc(50% + 24px);
+    }
+    
+
+ }
+ 
+ @media(max-width:972px) {
+    .timeline-content {
+       margin-left: 8rem;
+    }
+    .timeline-date {
+       margin: 6px 10px 0 0;
+    }
+    .timeline-dot {
+       left: 460px;
+    }
+ }
+ 
+ @media(max-width:933px) {
+    .education {
+       padding-top: 6rem;
+       padding-left: 4rem;
+       padding-right: 5rem;
+    }
+    .timeline-item {
+       width: 95%;
+    }
+    .timeline-dot {
+       z-index: 999;
+       height: 20px;
+       width: 20px;
+       position: absolute;
+       left: calc(50% - 2px);
+       top: 10px;
+       bottom: 1px;
+    }
+ }
+ 
+ @media(max-width:895px) {
+    header {
+       padding: 1rem 3%;
+    }
+    section {
+       padding: 10rem 3% 2rem;
+    }
+    .timeline-dot {
+       left: 36.2rem;
+    }
+    #menu-icon {
+       display: block;
+    }
+    #menu-icon:hover {
+       cursor: pointer;
+       scale: 1.1;
+    }
+    .home-img img {
+       max-width: 27vh;
+       max-height: 27vh;
+       margin-right: 5vh;
+    }
+    .navbar {
+       position: absolute;
+       top: 100%;
+       right: 0;
+       width: 50%;
+       padding: 4rem 2%;
+       background: rgba(0, 0, 0, 0.8);
+       backdrop-filter: blur(20px);
+       border-left: 2px solid rgba(251, 0, 0, 0.8);
+       border-bottom: 2px solid rgba(251, 0, 0, 0.8);
+       display: none;
+    }
+    .navbar.active {
+       display: block;
+    }
+    .navbar a {
+       margin-left: 15rem;
+       text-align: center;
+       display: block;
+       font-size: 2rem;
+       margin: 3rem 0;
+       color: #fff;
+    }
+    .navbar a:hover::after {
+       margin-left: 10rem;
+       width: 60%;
+    }
+    .navbar a:hover {
+       color: var(--main-color);
+    }
+    .home {
+       flex-direction: column-reverse;
+    }
+    .home-content h3 {
+       font-size: 2.4rem;
+    }
+    .home-content h1 {
+       font-size: 8rem;
+       margin-top: 3rem;
+    }
+    .home-content p {
+       max-width: 600px;
+       margin: 0 auto;
+    }
+    .timeline-date {
+       margin: 6px 2px 0 60px;
+    }
+    .contact {
+       padding: 4rem 12rem;
+    }
+    .contact h2 {
+       margin-bottom: 10rem;
+    }
+    .Skills {
+       z-index: 1;
+       width: 20rem;
+       margin: 3rem 18rem;
+       padding-top: 1rem;
+       padding-left: 16rem;
+       padding-right: 16rem;
+       padding-bottom: 1rem;
+       color: #ffff;
+       box-shadow: 0 0 25px rgba(255, 0, 0, 0.9),
+                   0 0 25px rgba(255, 0, 0, 0.9);
+       border-radius: 3rem;
+    }
+    .timeline-dot {
+       left: 36.2rem;
+    }
+ }
+ 
+
+
+ @media (width: 820px) {
+    .timeline-dot {
+        left: 36.2rem;
+    }
+
+ }
+ @media(max-width:770px){
+    .timeline-dot {
+        left: 38rem;
+    }
+
+ }
