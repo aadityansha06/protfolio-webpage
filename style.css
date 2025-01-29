@@ -244,7 +244,8 @@ section{
     width: 100%;
     height: 100%;
     border-left: 3px solid black;
-    right: -8px;
+    right: 0;
+    top: 4px;
     animation: cursor 0.6s infinite, typing 10s steps(14)
     infinite;
 }
@@ -792,28 +793,6 @@ section{
     }
 }
 /* Keyframes for sliding in from the left */
-@keyframes slideInFromLeft {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* Keyframes for sliding in from the right */
-@keyframes slideInFromRight {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
 
 /* Apply animations to timeline items */
 .timeline-item {
@@ -1409,21 +1388,179 @@ section{
        border-radius: 3rem;
     }
     .timeline-dot {
-       left: 36.2rem;
+        transform: translateX(-80%);
+    
     }
  }
  
 
 
- @media (width: 820px) {
+
+ 
+ @media(max-width:770px){
     .timeline-dot {
-        left: 36.2rem;
+        transform: translateX(88%);
+    
     }
 
  }
- @media(max-width:770px){
-    .timeline-dot {
-        left: 38rem;
+
+
+
+ @media(max-width:425px){
+    .home-content h1{
+        font-size: rem;
     }
+    .home-content {
+        
+        margin-left: 10rem;
+        /* text-align: left; */
+    }
+    .home-content span{
+        font-size: 75%;
+    }
+    .home-img img{
+        margin-top: 5vh;
+        margin-left: 12vh;
+    }
+    .text-animation span::after{
+        top:4px;
+        right: 0px;
+    }
+
+    
+    .Skills{
+        margin: 4rem 4rem;
+        padding-left: 10rem;
+    }
+    .Skills li{
+              margin: 2rem 1rem;
+          padding: 1rem;
+    }
+    
+    .contact {
+        padding: 4rem 4rem 1rem 5rem;
+    }
+    .contact h2 {
+        margin-bottom: 15rem;
+    }
+    .contact form{
+        gap:5rem;
+    }
+    .contact form .btn{
+        margin-top: 4rem;
+    }
+    
+    .footer .list {
+     margin-left: 2rem;
+    }
+    .footer .social{
+     margin-left: 2rem;
+    }
+    .footer .copyright{
+        margin-left: 5.5;
+    }
+    /* education  */
+    .education {
+        padding: 5% 0; /* Remove left/right padding */
+        width: 100%;
+        max-width: 100vw; /* Ensures it doesn't exceed viewport width */
+        overflow: hidden; /* Ensures no extra space */
+    }
+    
+    .education h2, 
+.education h1 {
+    text-align: center;
+    font-size: 4.6rem; /* Adjust size if needed */
+    color: white;
+    margin-bottom: 3rem;
+    margin-left: 5.5rem;
+    letter-spacing: 1.3rem; /* Add space between heading and timeline */
+}
+    .education::before{
+       background-size: revert;
+       filter: brightness(0.5);
+       
+    }
+    .timeline-items {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center timeline items */
+        width: 100%;
+    max-width: 100vw;
+        position: relative;
+    }
+
+    .timeline-items::before {
+        left: 50%; /* Center the line */
+        transform: translateX(-50%);
+        width: 3px; /* Reduce width for a clean look */
+    }
+
+    .timeline-dot {
+        left: 50%; /* Center dots */
+        transform: translateX(-50%);
+        height: 15px;
+        width: 15px;
+    }
+    .timeline-content {
+        width: 85%;  /* Reduce width */
+        max-width: 250px; /* Set a maximum width */
+        margin: 10px 0;
+        padding: 10px;
+        margin-left: 7rem;
+        padding-right: 6rem;
+        border-radius: 2rem;
+    }
+    .timeline-date {
+        margin: 6px 25px 0 60px;
+    }
+
+    .timeline-content h3 {
+        font-size: 16px;
+    }
+    .timeline-dot{
+        transform: translateX(-75%);
+    }
+
+    .timeline-content p {
+        font-size: 14px;
+    }
+    .contact.in-view::before{
+        transform: scale(1.8);
+    }
+ }
+
+
+
+
+
+
+
+ @media(max-width:375px){
+    html{
+        font-size: 36%;
+    }
+    .home-content{
+        margin-left: 0;
+    }
+
+    .education h2, .education h{
+        font-size: 4.6rem;
+        letter-spacing: 1rem;
+    }
+    .Skills {
+        margin: 10rem 10rem;
+        padding-left: 15rem;
+        margin-top: 12rem;
+    }
+    .text-animation span::after{
+        top:2px;
+    
+    }
+
+
+ }
+ @media(max-width:325px){
 
  }
