@@ -114,6 +114,24 @@ body{
     display: none;
     margin-right: 3.5rem;
 }
+
+/* Initial state for both sections */
+.home, .education {
+    opacity: 0;
+    transform: translateY(50px); /* Slightly off-screen */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Visible state for both sections */
+.home.visible, .education.visible {
+    opacity: 1;
+    transform: translateY(0); /* Slide into place */
+}
+
+
+
+
+
 section{
     min-height: 100vh;
     padding: 10rem 12% 10rem;

@@ -113,6 +113,30 @@ navLinks.forEach(link => {
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  // Create an IntersectionObserver to observe the home and education sections
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          // If the section is in the viewport
+          if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+          } else {
+              entry.target.classList.remove('visible'); // Remove class when out of view
+          }
+      });
+  }, { threshold: 0.5 }); // Trigger when 50% of the section is in view
+
+  // Select home and education sections
+  const homeSection = document.querySelector('.home');
+  const educationSection = document.querySelector('.education');
+
+  // Observe the sections
+  observer.observe(homeSection);
+  observer.observe(educationSection);
+});
+
+
+
 
 
 
