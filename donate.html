@@ -100,13 +100,7 @@
     object-fit: cover;
 }
 
-.upi-id {
-    font-size: 1rem;
-    color: white;
-    margin-bottom: 1.5rem;
-}
-
-.donate-btn {
+.copy-upi-btn {
     text-decoration: none;
     display: inline-block;
     padding: 1rem 2rem;
@@ -117,16 +111,16 @@
     color: black;
     font-weight: 600;
     transition: 0.3s ease-in-out;
+    cursor: pointer;
 }
 
-.donate-btn:hover {
+.copy-upi-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 50px var(--main-color);
     background-color: black;
-    border: 3px solid;
+    border: 1px solid;
     color: var(--main-color);
 }
-
 /* Hover effect for the donate card */
 .donate-container:hover {
     box-shadow: 0 0 25px rgba(255, 0, 0, 0.9); /* Red glow effect */
@@ -154,8 +148,7 @@
             <div class="qr-container">
                 <img src="pic/qr.jpg" alt="Donate QR Code" class="qr-image">
             </div>
-            <p class="upi-id">UPI ID:pkumariverma42@okaxis</p>
-            <a href="upi://pay?pa=pkumariverma42@okaxis&pn=Aadityansha&mc=1234&tid=5678&url=https://your-website.com" class="donate-btn">Donate Now</a>
+            <button class="copy-upi-btn" onclick="copyUPI()">Copy UPI ID</button>
 
         </div>
     </section>
@@ -168,6 +161,32 @@
     preloader.style.display = 'none';
     mainContent.style.display = 'block';
   });
+
+
+  function copyUPI() {
+        // The UPI ID to be copied
+        const upiId = "pkumariverma42@okaxis";
+        
+        // Create a temporary input element to hold the UPI ID
+        const tempInput = document.createElement("input");
+        document.body.appendChild(tempInput);
+        
+        // Set the value of the input element to the UPI ID
+        tempInput.value = upiId;
+        
+        // Select the text in the input field
+        tempInput.select();
+        tempInput.setSelectionRange(0, 99999); // For mobile devices
+        
+        // Copy the selected text to clipboard
+        document.execCommand("copy");
+        
+        // Remove the temporary input element
+        document.body.removeChild(tempInput);
+        
+        // Show a popup alert saying UPI is copied
+        alert("UPI Copied!");
+    }
     </script>
 </body>
 </html>
