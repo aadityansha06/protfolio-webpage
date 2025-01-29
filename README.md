@@ -30,8 +30,8 @@ Welcome to my **personal portfolio website**! This project showcases my skills, 
 
 ## 📝 To-Do
 - [ ] Add more JavaScript interactions
-- [ ] Improve SEO & Performance
-- [ ] Add a blog section
+- [ ] Improve animation and responsiveness 
+- [ ] Add different theme section
 
 ## 📬 Contact
   **Telegram:** [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/aadityansha)  
