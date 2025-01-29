@@ -34,8 +34,8 @@ Welcome to my **personal portfolio website**! This project showcases my skills, 
 - [ ] Add a blog section
 
 ## 📬 Contact
-  **Telegram:** [aadityansha]  
+  **Telegram:** [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/aadityansha)  
 🔗 **GitHub:** [aadityansha06](https://github.com/aadityansha06)  
-📸 **Instagram:** [AADITYANSHA](https://www.instagram.com/_dont_distrube/)  
+📸 **Instagram:** [AADITYANSHA](https://www.instagram.com/_dont_distrube/)    
 
 Feel free to fork and contribute! 🚀
