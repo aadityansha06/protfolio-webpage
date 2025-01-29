@@ -119,13 +119,16 @@ body{
 .home, .education {
     opacity: 0;
     transform: translateY(50px); /* Slightly off-screen */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition: opacity 0.5s ease-out, transform 0.4s ease-out;
 }
 
 /* Visible state for both sections */
 .home.visible, .education.visible {
     opacity: 1;
     transform: translateY(0); /* Slide into place */
+}
+.home{
+    transition-delay: 0.3s ;
 }
 
 
