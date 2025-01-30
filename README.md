@@ -12,6 +12,7 @@ Welcome to my **personal portfolio website**! This project showcases my skills, 
 - **Smooth Animations & Transitions** 🎨
 - **Projects Section** to showcase my work
 - **Contact Form** to get in touch easily
+- **Donation Section** to inspire me to add more features and help you to create a UPI payment gateway
 
 ## 🛠️ Technologies Used
 - **HTML5**
