@@ -57,7 +57,7 @@
     background-size: cover; /* Ensures the image covers the entire section */
     position: relative;
     padding: 3rem 0;
-    filter: brightness(0.5); /* Lower the brightness of the background */
+    filter: brightness(0.7); /* Lower the brightness of the background */
 }
 
 .donate-container {
@@ -103,7 +103,8 @@
 .copy-upi-btn {
     text-decoration: none;
     display: inline-block;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem;
+    margin-top: 2rem;
     background: var(--main-color);
     box-shadow: 0 0 25px var(--main-color);
     border-radius: 5rem;
@@ -119,8 +120,76 @@
     box-shadow: 0 0 50px var(--main-color);
     background-color: black;
     border: 1px solid;
+    
     color: var(--main-color);
 }
+/* Pop-up Modal */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 350px;
+}
+
+.popup-content h2 {
+    margin-bottom: 10px;
+}
+
+.popup-content input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #f44336;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.pay-now-btn {
+    width: 100%;
+    background: #f44336;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.pay-now-btn:hover {
+    background: #d32f2f;
+}
+
+/* Close Button */
+.close-btn {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Success Message */
+.success-message {
+    display: none;
+    background: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
 /* Hover effect for the donate card */
 .donate-container:hover {
     box-shadow: 0 0 25px rgba(255, 0, 0, 0.9); /* Red glow effect */
@@ -153,9 +222,30 @@
             <div class="qr-container">
                 <img src="pic/qr.jpg" alt="Donate QR Code" class="qr-image">
             </div>
+            <button class="copy-upi-btn" onclick="openAmountPopup()">Donate Now</button>
             <button class="copy-upi-btn" onclick="copyUPI()">Copy UPI ID</button>
+          
+
+
+<!-- Amount Input Popup (Initially Hidden) -->
+<div id="donate-popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h2>Enter Amount</h2>
+        <input type="number" id="amount" placeholder="Enter amount (₹)" min="1">
+        <button class="pay-now-btn" onclick="redirectToUPI()">Pay Now</button>
+    </div>
+</div>
+
+<!-- Success Confirmation Message -->
+<!-- Success Confirmation Message (Initially Hidden) -->
+<div id="success-message" class="success-message" style="display: none;">
+    <p>✅ Payment Successful! Thank you for your support. ❤️</p>
+</div>
 
         </div>
+
+
     </section>
     
     <script>
@@ -192,6 +282,47 @@
         // Show a popup alert saying UPI is copied
         alert("UPI Copied!");
     }
+
+    function openAmountPopup() {
+    document.getElementById("donate-popup").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("donate-popup").style.display = "none";
+}
+
+function redirectToUPI() {
+    let amount = document.getElementById("amount").value;
+
+    if (!amount || amount <= 0) {
+        alert("Please enter a valid amount.");
+        return;
+    }
+
+    let upiID = "pkumariverma42@okaxis"; // Your UPI ID
+    let upiURL = `upi://pay?pa=${upiID}&pn=Aadityansha&mc=&tid=&tr=&tn=Donation&am=${amount}&cu=INR`;
+
+    // Open UPI Payment in New Tab
+    window.location.href = upiURL;
+
+    // Save Payment Attempt in Local Storage (To track return visit)
+    localStorage.setItem("donationPending", "true");
+}
+
+// Check if User Returned After Payment
+window.onload = function () {
+    let donationStatus = localStorage.getItem("donationPending");
+
+    if (donationStatus === "true") {
+        // Show success message
+        document.getElementById("success-message").style.display = "block";
+
+        // Clear stored payment status
+        localStorage.removeItem("donationPending");
+    }
+};
+
+
     </script>
 </body>
 </html>
