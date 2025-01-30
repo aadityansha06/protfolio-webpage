@@ -300,7 +300,10 @@ function redirectToUPI() {
     }
 
     let upiID = "pkumariverma42@okaxis"; // Your UPI ID
-    let upiURL = `upi://pay?pa=${upiID}&pn=Aadityansha&mc=&tid=&tr=&tn=Donation&am=${amount}&cu=INR`;
+    let transactionNote = "Love From Aadityansha to U ❤️";
+    let encodedTransactionNote = encodeURIComponent(transactionNote);
+    let upiURL = `upi://pay?pa=${upiID}&pn=Aadityansha&mc=&tid=&tr=&tn=${encodedTransactionNote}&am=${amount}&cu=INR`;
+
 
     // Open UPI Payment in New Tab
     window.location.href = upiURL;
