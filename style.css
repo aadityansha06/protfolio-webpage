@@ -6,7 +6,7 @@
     font-family: "Lexend Giga", serif;
 }
 :root{
-    --main-color: rgba(250, 31, 31, 0.823);
+    --main-color: rgba(255,0,0,0.9);
 }
 
 html{
@@ -73,7 +73,7 @@ body{
 }
 .logo span{
     color: var(--main-color);
-    text-shadow: 0 0 20px rgb(251, 0, 0);
+    text-shadow: 0 0 20px var(--main-color);
 }
 
 .navbar a {
@@ -155,7 +155,7 @@ section{
 .home-content span{
     
     color: var(--main-color);
-    text-shadow: 0 0 20px rgba(251, 0, 0,0.8);
+    text-shadow: 0 0 20px var(--main-color);
 }
 
 
@@ -183,14 +183,14 @@ section{
     width: 45vh; /* Set the desired width */
     height: 45vh; /* Keep height same as width for a perfect circle */
     border-radius: 50%; /* Makes the image circular */
-    box-shadow: 0 0 15px rgba(251, 0, 0,0.9); /* Add a glow effect */
+    box-shadow: 0 0 15px var(--main-color); /* Add a glow effect */
     object-fit: cover; /* Ensures the image scales properly */
     transition: transform ease 0.3s;
 }
 .home-img img:hover{
     cursor: pointer;
     transform: scale(1.3);
-    box-shadow: 0 0 35px rgba(251, 0, 0,0.9);
+    box-shadow: 0 0 35px var(--main-color);
 }
 .home-content p{
     font-size: 1.5rem;
@@ -217,9 +217,9 @@ section{
 .social-icon a:hover{
     color: #ffff;
     cursor: pointer;
-     box-shadow: 0 0 15px rgba(251, 0, 0,0.9);
+     box-shadow: 0 0 15px var(--main-color);
     transform: scale(1.2)translateZ(10px);
-    background-color: rgba(231, 0, 0, 0.89);
+    background-color: var(--main-color);
 
 }
 .btn{
@@ -405,8 +405,8 @@ section{
     height: 21px;
     width: 21px;
     background-color: var(--main-color);
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9),
-        0 0 25px rgba(255, 0, 0, 0.9); /* Red glow effect */
+    box-shadow: 0 0 25px var(--main-color),
+        0 0 25px var(--main-color); /* Red glow effect */
     position: absolute;
     left: calc(50% - 8px);
     border-radius: 50%;
@@ -441,7 +441,7 @@ section{
     border: 3px solid var(--main-color);
     padding: 30px 50px;
     border-radius: 4rem;
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9);
+    box-shadow: 0 0 25px var(--main-color);
     cursor: pointer;
     transition: 0.3s ease-in-out;
 
@@ -475,9 +475,7 @@ section{
     
 }
 
-:root{
-    --main-color: rgba(250, 31, 31, 0.823);
-}
+
 
 html{
     font-size: 60%;
@@ -538,7 +536,7 @@ body{
 }
 .logo span{
     color: var(--main-color);
-    text-shadow: 0 0 20px rgb(251, 0, 0);
+    text-shadow: 0 0 20px var(--main-color);
 }
 
 .navbar a {
@@ -598,7 +596,7 @@ section{
 .home-content span{
     
     color: var(--main-color);
-    text-shadow: 0 0 20px rgba(251, 0, 0,0.8);
+    text-shadow: 0 0 20px var(--main-color);
 }
 
 
@@ -626,14 +624,14 @@ section{
     width: 45vh; /* Set the desired width */
     height: 45vh; /* Keep height same as width for a perfect circle */
     border-radius: 50%; /* Makes the image circular */
-    box-shadow: 0 0 15px rgba(251, 0, 0,0.9); /* Add a glow effect */
+    box-shadow: 0 0 15px var(--main-color); /* Add a glow effect */
     object-fit: cover; /* Ensures the image scales properly */
     transition: transform ease 0.3s;
 }
 .home-img img:hover{
     cursor: pointer;
     transform: scale(1.3);
-    box-shadow: 0 0 35px rgba(251, 0, 0,0.9);
+    box-shadow: 0 0 35px var(--main-color);
 }
 .home-content p{
     font-size: 1.5rem;
@@ -660,9 +658,9 @@ section{
 .social-icon a:hover{
     color: #ffff;
     cursor: pointer;
-     box-shadow: 0 0 15px rgba(251, 0, 0,0.9);
+     box-shadow: 0 0 15px var(--main-color);
     transform: scale(1.2)translateZ(10px);
-    background-color: rgba(231, 0, 0, 0.89);
+    background-color: var(--main-color);
 
 }
 .btn{
@@ -701,7 +699,7 @@ section{
     color: var(--main-color);
     animation: words 10s infinite;
 }
-.text-animation span::after{
+.text-animation span::after {
     content: "";
     background-color: black;
     position: absolute;
@@ -709,9 +707,9 @@ section{
     height: 100%;
     border-left: 3px solid black;
     right: -8px;
-    animation: cursor 0.6s infinite, typing 10s steps(14)
-    infinite;
+    animation: cursor 0.6s infinite, typing 10s steps(14) infinite;
 }
+
 @keyframes cursor{
     to{
         border-left: 2px solid var(--main-color);
@@ -870,8 +868,8 @@ section{
     height: 21px;
     width: 21px;
     background-color: var(--main-color);
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9),
-        0 0 25px rgba(255, 0, 0, 0.9); /* Red glow effect */
+    box-shadow: 0 0 25px var(--main-color),
+        0 0 25px var(--main-color); /* Red glow effect */
     position: absolute;
     left: calc(50% - 9px);
     border-radius: 50%;
@@ -911,7 +909,7 @@ section{
     width: 30%;  /* Sets the width to 50% */
     max-width: 200px; /* Limits the width to prevent it from getting too wide */
     border-radius: 5rem;
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9);
+    box-shadow: 0 0 25px var(--main-color);
     cursor: pointer;
     transition: 0.3s ease-in-out;
     margin-left: 3rem;
@@ -962,8 +960,8 @@ section{
     color: #ffff;
     
 
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9),
-    0 0 25px rgba(255, 0, 0, 0.9);
+    box-shadow: 0 0 25px var(--main-color),
+    0 0 25px var(--main-color);
     border-radius:4rem;
     
  }
@@ -986,7 +984,7 @@ section{
 }
 
 .bar:hover {
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.6), 0 0 25px rgba(255, 0, 0, 0.6);
+    box-shadow: 0 0 25px var(--main-color), 0 0 25px var(--main-color);
     transform: scale(1.2); /* Corrected scale property */
 }
 
@@ -994,7 +992,7 @@ section{
 .bar span {
     height: 100%;  /* Full height of the container */
     display: block;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.651) 0%, rgba(255, 0, 0, 1) 100%);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.651) 0%, var(--main-color) 100%);
     width: 0%;  /* Start from 0% width */
     transition: width 2s ease-in-out;
 }
@@ -1061,10 +1059,10 @@ section{
   }
   
   .contact h2 span {
-    color: rgba(255, 0, 0, 0.9); /* Red glow effect for "Me" */
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.9),
-                 0 0 20px rgba(255, 0, 0, 0.7),
-                 0 0 30px rgba(255, 0, 0, 0.5);
+    color: var(--main-color); /* Red glow effect for "Me" */
+    text-shadow: 0 0 10px var(--main-color),
+                 0 0 20px var(--main-color),
+                 0 0 30px var(--main-color);
   }
   
     .contact form textarea {
@@ -1075,9 +1073,9 @@ section{
        
         color: #fff;
         background: rgba(0, 0, 0, 0.8);
-        border: 2px solid rgba(255, 0, 0, 0.9);
+        border: 2px solid var(--main-color);
         border-radius: 8px;
-        box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+        box-shadow: 0 0 15px var(--main-color);
         outline: none;
         resize: none; /* Prevent resizing */
     }
@@ -1121,9 +1119,9 @@ section{
     font-size: 1.2rem;
     color: #fff;
     background: rgba(0, 0, 0, 0.8);
-    border: 2px solid rgba(255, 0, 0, 0.9); /* Red glow for borders */
+    border: 2px solid var(--main-color); /* Red glow for borders */
     border-radius: 2rem;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+    box-shadow: 0 0 15px var(--main-color);
     outline: none;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
@@ -1137,7 +1135,7 @@ section{
     display: block;
     background: rgba(0, 0, 0, 0.8);
     margin-right: 30rem;
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9), 0 0 25px rgba(255, 0, 0, 0.6);
+    box-shadow: 0 0 25px var(--main-color), 0 0 25px var(--main-color);
     transform: scale(1.03);
   }
   
@@ -1161,13 +1159,13 @@ section{
   .footer .social {
     text-align: center;
     padding-bottom: 1.7rem;
-    color: rgba(255, 0, 0, 0.9);
+    color: var(--main-color);
   }
   
   .footer .social a {
     font-size: 2.7rem;
-    color: rgba(255, 0, 0, 0.9);
-    border: 0.3rem solid rgba(255, 0, 0, 0.9);
+    color: var(--main-color);
+    border: 0.3rem solid var(--main-color);
     width: 3rem;
     height: 3rem;
     line-height: 2.8rem;
@@ -1182,7 +1180,7 @@ section{
     transform: scale(1.4) translateY(-10px); /* Smooth scale and move up effect */
     background-color: var(--main-color); /* You can define this color elsewhere */
     color: black;
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9);
+    box-shadow: 0 0 25px var(--main-color);
   }
 
   
@@ -1217,14 +1215,14 @@ section{
     bottom: 0;
     width: 0%; /* Start with no width */
     height: 2px; /* Height of the underline */
-    background-color: rgba(255, 0, 0, 1); /* Red color for the underline */
+    background-color: var(--main-color); /* Red color for the underline */
     transition: width 0.3s ease; /* Smooth width transition */
   
 }
 
 .footer .list a:hover {
     transform: scaleZ(-100);
-    color: rgba(255, 0, 0, 1); /* Red color on hover */
+    color: var(--main-color); /* Red color on hover */
 }
 
 .footer .list a:hover::after {
@@ -1350,8 +1348,8 @@ section{
        padding: 4rem 2%;
        background: rgba(0, 0, 0, 0.8);
        backdrop-filter: blur(20px);
-       border-left: 2px solid rgba(251, 0, 0, 0.8);
-       border-bottom: 2px solid rgba(251, 0, 0, 0.8);
+       border-left: 2px solid var(--main-color);
+       border-bottom: 2px solid var(--main-color);
        display: none;
     }
     .navbar.active {
@@ -1404,8 +1402,8 @@ section{
        padding-right: 16rem;
        padding-bottom: 1rem;
        color: #ffff;
-       box-shadow: 0 0 25px rgba(255, 0, 0, 0.9),
-                   0 0 25px rgba(255, 0, 0, 0.9);
+       box-shadow: 0 0 25px var(--main-color),
+                   0 0 25px var(--main-color);
        border-radius: 3rem;
     }
     .timeline-dot {
