@@ -10,7 +10,7 @@ Welcome to my **personal portfolio website**! This project showcases my skills, 
 - **Dark Theme UI** for a modern look 🌙
 - **Responsive Design** (Works on all devices)
 - **Smooth Animations & Transitions** 🎨
-- **Projects Section** to showcase my work
+- **AI Chat-Bot** to help you with your querries
 - **Contact Form** to get in touch easily
 - **Donation Section** to inspire me to add more features and help you to create a UPI payment gateway
 
