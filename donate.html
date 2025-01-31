@@ -322,20 +322,35 @@
     }
 
     function redirectToUPI() {
-        var amount = document.getElementById("amount").value;
-        var name = document.getElementById("name").value;
+    var amount = document.getElementById("amount").value;
+    var name = document.getElementById("name").value;
 
-        // Check if both fields are filled
-        if (amount && name) {
-            let upiID = "pkumariverma42@okaxis"; // Replace with your UPI ID
-            let upiURL = `upi://pay?pa=${upiID}&pn=${name}&tn=Love%20From%20Aadityansha%20to%20${name}%20❤️&am=${amount}&cu=INR`;
+    // Check if both fields are filled
+    if (amount && name) {
+        amount = parseFloat(amount);  // Convert to a number for comparison
 
-            // Redirect to UPI payment gateway
-            window.location.href = upiURL;
-        } else {
-            alert("Please enter both name and amount.");
-        }
+        // Proceed with QR code payment (no limit on the amount)
+        let upiID = "pkumariverma42@okaxis"; // Replace with your UPI ID
+        let upiURL = `upi://pay?pa=${upiID}&pn=${name}&tn=Donation%20from%20${name}%20❤️&am=${amount}&cu=INR`;
+
+        // Try to open UPI app for payment
+        window.location.href = upiURL;
+
+        // Wait for 3 seconds, and if UPI app doesn't open, show fallback options
+        setTimeout(function () {
+            alert("If your UPI app didn't open, please scan the QR code directly or try using another UPI app.");
+        }, 3000); // 3 seconds timeout
+    } else {
+        alert("Please enter both name and amount.");
     }
+}
+
+// Hide error message when the user adjusts the amount
+document.getElementById("amount").addEventListener("input", function() {
+    var amount = document.getElementById("amount").value;
+    // No error message to hide as we removed the ₹2000 limit
+});
+
 
     </script>
 </body>
