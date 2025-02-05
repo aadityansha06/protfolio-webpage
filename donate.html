@@ -251,28 +251,21 @@
             <button class="copy-upi-btn" onclick="openAmountPopup()">Donate Now</button>
             <button class="copy-upi-btn" onclick="copyUPI()">Copy UPI ID</button>
     
-            <!-- Amount Input Popup (Initially Hidden) -->
             <div id="donate-popup" class="popup">
                 <div class="popup-content">
                     <span class="close-btn" onclick="closePopup()">&times;</span>
                     <h2>Enter Details</h2>
                     <input type="text" id="name" placeholder="Enter your name" required>
-                    
-                    <!-- Input for Amount -->
-                    <input type="number" id="amount" placeholder="Enter amount (₹)" min="1">
-                   
-                 
+                    <input type="number" id="amount" placeholder="Enter amount (₹)" min="1" max="100000">
                     <button class="pay-now-btn" onclick="redirectToUPI()">Pay Now</button>
                 </div>
             </div>
     
-            <!-- Success Confirmation Message (Initially Hidden) -->
-            <div id="success-message" class="success-message" style="display: none;">
+            <div id="success-message" class="success-message">
                 <p>✅ Payment Successful! Thank you for your support. ❤️</p>
             </div>
         </div>
     </section>
-
 
 
 
@@ -322,27 +315,50 @@
     }
 
     function redirectToUPI() {
-    var amount = document.getElementById("amount").value;
-    var name = document.getElementById("name").value;
+            var amount = document.getElementById("amount").value;
+            var name = document.getElementById("name").value;
 
-    if (amount && name) {
-        let upiID = "pkumariverma42@okaxis"; // Ensure this UPI ID is correct
-        let transactionRef = "TXN" + new Date().getTime(); // Unique transaction ID
-        let note = `Thanks for Your Support ❤️ ${name}`;
+            // Validate amount
+            if (!amount || amount <= 0 || amount > 100000) {
+                alert("Please enter a valid amount between ₹1 and ₹100,000");
+                return;
+            }
 
-        let upiURL = `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&tn=${encodeURIComponent(note)}&am=${amount}&cu=INR&tr=${transactionRef}`;
+            // Validate name
+            if (!name || name.trim() === "") {
+                alert("Please enter your name");
+                return;
+            }
 
-        // Redirect to UPI app
-        window.location.href = upiURL;
+            try {
+                let upiID = "pkumariverma42@okaxis";
+                let transactionRef = "TXN" + Math.floor(Math.random() * 1000000); // Shorter transaction ID
+                let note = `Support from ${name}`; // Simplified note
 
-        // Show alert if the UPI app doesn't open
-        setTimeout(() => {
-            alert("If your UPI app didn't open, try again or scan the QR code manually.");
-        }, 3000);
-    } else {
-        alert("Please enter both name and amount.");
-    }
-}
+                // Format amount to ensure it's a valid number with max 2 decimal places
+                amount = parseFloat(amount).toFixed(2);
+
+                // Construct UPI URL with minimal encoding
+                let upiURL = `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR&tr=${transactionRef}&tn=${encodeURIComponent(note)}`;
+
+                // Close popup before redirect
+                closePopup();
+
+                // Use window.open instead of window.location for better compatibility
+                window.open(upiURL, '_blank');
+
+                // Show fallback message after a short delay
+                setTimeout(() => {
+                    if (!document.hidden) {
+                        alert("If your UPI app didn't open, please try scanning the QR code instead.");
+                    }
+                }, 2000);
+
+            } catch (error) {
+                alert("Something went wrong. Please try scanning the QR code instead.");
+                console.error(error);
+            }
+        }
 
 
     </script>
