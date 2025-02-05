@@ -314,8 +314,7 @@
         document.getElementById("donate-popup").style.display = "none";
     }
 
-   // Function to handle UPI payments with multiple app options
-function handleUPIPayment() {
+    function handleUPIPayment() {
     const amount = document.getElementById("amount").value;
     const name = document.getElementById("name").value;
     
@@ -324,85 +323,68 @@ function handleUPIPayment() {
         return;
     }
 
-    // UPI Details
+    // Basic UPI details
     const upiId = "pkumariverma42@okaxis";
-    const note = `Support from ${name}`;
-    const merchantName = "PRITI KUMARI SHRIVASTAV";
-    
-    // Create different UPI URLs for various apps
-    const upiUrls = {
-        // PhonePe format
-        phonepe: `phonepe://pay?pa=${upiId}&pn=${merchantName}&am=${amount}&tn=${note}&cu=INR`,
-        
-        // Google Pay format
-        gpay: `tez://upi/pay?pa=${upiId}&pn=${merchantName}&am=${amount}&tn=${note}&cu=INR`,
-        
-        // Paytm format
-        paytm: `paytm://upi/pay?pa=${upiId}&pn=${merchantName}&am=${amount}&tn=${note}&cu=INR`,
-        
-        // Generic UPI format (fallback)
-        generic: `upi://pay?pa=${upiId}&pn=${merchantName}&am=${amount}&tn=${note}&cu=INR`
+    const merchantName = encodeURIComponent("PRITI KUMARI SHRIVASTAV");
+    const note = encodeURIComponent(`Support from ${name}`);
+    const formattedAmount = parseFloat(amount).toFixed(2);
+
+    // Create intent URL for specific apps
+    const intentUrls = {
+        gpay: `tez://upi/pay?pa=${upiId}&pn=${merchantName}&am=${formattedAmount}&cu=INR&tn=${note}`,
+        phonepe: `phonepe://pay?pa=${upiId}&pn=${merchantName}&am=${formattedAmount}&cu=INR&tn=${note}`,
+        paytm: `paytmmp://pay?pa=${upiId}&pn=${merchantName}&am=${formattedAmount}&cu=INR&tn=${note}`,
+        bhim: `upi://pay?pa=${upiId}&pn=${merchantName}&am=${formattedAmount}&cu=INR&tn=${note}`
     };
 
-    // Detect mobile device
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-    if (isMobile) {
-        // Show payment app selection dialog
-        showPaymentOptions(upiUrls);
-    } else {
-        alert("Please use a mobile device to make UPI payments or scan the QR code.");
-    }
-}
-
-// Function to show payment options dialog
-function showPaymentOptions(upiUrls) {
-    const dialog = document.createElement('div');
-    dialog.innerHTML = `
-        <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 999; display: flex; align-items: center; justify-content: center;">
+    // Show app selection
+    const paymentDialog = `
+        <div id="payment-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 999; display: flex; align-items: center; justify-content: center;">
             <div style="background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 350px;">
-                <h3 style="margin-bottom: 15px; text-align: center;">Choose Payment App</h3>
+                <h3 style="margin-bottom: 15px; text-align: center;">Select Payment App</h3>
                 
-                <button onclick="tryOpenApp('${upiUrls.gpay}')" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #1a73e8; color: white;">
+                <button onclick="openApp('${intentUrls.gpay}')" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #1a73e8; color: white; font-weight: bold;">
                     Google Pay
                 </button>
                 
-                <button onclick="tryOpenApp('${upiUrls.phonepe}')" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #5f259f; color: white;">
+                <button onclick="openApp('${intentUrls.phonepe}')" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #5f259f; color: white; font-weight: bold;">
                     PhonePe
                 </button>
                 
-                <button onclick="tryOpenApp('${upiUrls.paytm}')" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #00b9f5; color: white;">
+                <button onclick="openApp('${intentUrls.paytm}')" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #00b9f5; color: white; font-weight: bold;">
                     Paytm
                 </button>
                 
-                <button onclick="tryOpenApp('${upiUrls.generic}')" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #2db84c; color: white;">
+                <button onclick="openApp('${intentUrls.bhim}')" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #2db84c; color: white; font-weight: bold;">
                     Other UPI Apps
                 </button>
                 
-                <button onclick="this.parentElement.parentElement.remove()" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #f1f1f1;">
+                <button onclick="document.getElementById('payment-overlay').remove()" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #f1f1f1;">
                     Cancel
                 </button>
             </div>
         </div>
     `;
-    document.body.appendChild(dialog);
+
+    // Add dialog to body
+    const div = document.createElement('div');
+    div.innerHTML = paymentDialog;
+    document.body.appendChild(div.firstChild);
 }
 
-// Function to try opening a UPI app
-function tryOpenApp(url) {
-    // Encode the URL to handle special characters
-    const encodedUrl = encodeURI(url);
-    
+function openApp(url) {
     // Try to open the app
-    window.location.href = encodedUrl;
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = "_blank";
+    link.click();
     
-    // Fallback timer
+    // Set timeout to check if app opened
     setTimeout(() => {
-        // If we're still here after 2 seconds, assume app didn't open
         if (document.hasFocus()) {
-            alert("Couldn't open payment app. Please try another app or scan the QR code.");
+            alert("Could not open payment app. Please try another app or scan the QR code.");
         }
-    }, 2000);
+    }, 1500);
 }
 
     </script>
