@@ -7,240 +7,234 @@
 
     <style>
         :root{
-    --main-color: rgba(250, 31, 31, 0.823);
-}
-*{
-    margin: 0;
-    padding: 0;
-    position: none;
-    scroll-behavior: smooth;
-    font-family:"Lexend Giga", serif ;
-    
-        scroll-behavior: smooth; /* Consider removing or adjusting this */
-    
-    
-}
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black; /* Background color while loading */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* Ensure it appears above other elements */
-  }
-  #loader {
-    width: 30%; /* Adjust size as needed */
-  }
-::-webkit-scrollbar{
-    width: 12px;
- }
- 
- ::-webkit-scrollbar-thumb{
-    background-color: var(--main-color);
- }
- ::-webkit-scrollbar-track{
-    background-color: black;
-    width: 300px;
-    border-radius: 20px;
- }
+            --main-color: rgba(250, 31, 31, 0.823);
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            position: none;
+            scroll-behavior: smooth;
+            font-family:"Lexend Giga", serif;
+        }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black; /* Background color while loading */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Ensure it appears above other elements */
+        }
+
+        #loader {
+            width: 30%; /* Adjust size as needed */
+        }
+
+        ::-webkit-scrollbar{
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-thumb{
+            background-color: var(--main-color);
+        }
+
+        ::-webkit-scrollbar-track{
+            background-color: black;
+            width: 300px;
+            border-radius: 20px;
+        }
+
         /* Donate Section */
-.donate {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: url('pic/main-img.jpeg') no-repeat center center; /* Add your background image */
-    background-size: cover; /* Ensures the image covers the entire section */
-    position: relative;
-    padding: 3rem 0;
-    filter: brightness(0.7); /* Lower the brightness of the background */
-}
+        .donate {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('pic/main-img.jpeg') no-repeat center center; /* Add your background image */
+            background-size: cover; /* Ensures the image covers the entire section */
+            position: relative;
+            padding: 3rem 0;
+            filter: brightness(0.7); /* Lower the brightness of the background */
+        }
 
-.donate-container {
-    background: rgba(255, 255, 255, 0.2); /* Light semi-transparent background */
-    backdrop-filter: blur(10px); /* Apply blur effect */
-    padding: 2rem 3rem;
-    border-radius: 1.5rem;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    max-width: 400px;
-    width: 100%;
-    z-index: 1; /* Ensures the content stays in front */
-    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for the box shadow */
-}
+        .donate-container {
+            background: rgba(255, 255, 255, 0.2); /* Light semi-transparent background */
+            backdrop-filter: blur(10px); /* Apply blur effect */
+            padding: 2rem 3rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+            z-index: 1; /* Ensures the content stays in front */
+            transition: box-shadow 0.3s ease-in-out; /* Smooth transition for the box shadow */
+        }
 
-.donate h2 {
-    font-size: 2.5rem;
-    color: white;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
+        .donate h2 {
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
 
-.donate p {
-    font-size: 1.2rem;
-    color: white;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-}
+        .donate p {
+            font-size: 1.2rem;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
 
-.qr-container {
-    margin: 1.5rem 0;
-}
+        .qr-container {
+            margin: 1.5rem 0;
+        }
 
-.qr-image {
-    width: 28vh; /* Adjust size of the QR code */
-    height: 30vh;
-    
-    border-radius: 1rem;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7); /* Glow effect for the QR code */
-    object-fit: cover;
-}
+        .qr-image {
+            width: 28vh; /* Adjust size of the QR code */
+            height: 30vh;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7); /* Glow effect for the QR code */
+            object-fit: cover;
+        }
 
-.copy-upi-btn {
-    text-decoration: none;
-    display: inline-block;
-    padding: 1rem 3rem;
-    margin-top: 2rem;
-    background: var(--main-color);
-    box-shadow: 0 0 25px var(--main-color);
-    border-radius: 5rem;
-    font-size: 1.5rem;
-    color: black;
-    font-weight: 600;
-    transition: 0.3s ease-in-out;
-    cursor: pointer;
-}
+        .copy-upi-btn {
+            text-decoration: none;
+            display: inline-block;
+            padding: 1rem 3rem;
+            margin-top: 2rem;
+            background: var(--main-color);
+            box-shadow: 0 0 25px var(--main-color);
+            border-radius: 5rem;
+            font-size: 1.5rem;
+            color: black;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+        }
 
-.copy-upi-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 50px var(--main-color);
-    background-color: black;
-    border: 1px solid;
-    
-    color: var(--main-color);
-}
-/* Pop-up Modal */
-.popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    justify-content: center;
-    align-items: center;
-}
+        .copy-upi-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px var(--main-color);
+            background-color: black;
+            border: 1px solid;
+            color: var(--main-color);
+        }
 
-.popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    width: 80%;
-    max-width: 350px;
-}
+        /* Pop-up Modal */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
 
-.popup-content h2 {
-    margin-bottom: 10px;
-}
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 350px;
+        }
 
-.popup-content input {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 2px solid #f44336;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
+        .popup-content h2 {
+            margin-bottom: 10px;
+        }
 
-.pay-now-btn {
-    width: 100%;
-    background: #f44336;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-}
+        .popup-content input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #f44336;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
 
-.pay-now-btn:hover {
-    background: #d32f2f;
-}
+        .pay-now-btn {
+            width: 100%;
+            background: #f44336;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
 
-/* Close Button */
-.close-btn {
-    float: right;
-    font-size: 24px;
-    cursor: pointer;
-}
+        .pay-now-btn:hover {
+            background: #d32f2f;
+        }
 
-/* Success Message */
-.success-message {
-    display: none;
-    background: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-}
+        /* Close Button */
+        .close-btn {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+        }
 
-/* Hover effect for the donate card */
-.donate-container:hover {
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.9); /* Red glow effect */
-    transform: scale(1.05); /* Slight zoom effect */
-}
-@media(max-width:425px){
-    #loader{
-         width: 50%;
-    }
-    .donate-container{
-        padding: 0 0 0 0;
-        padding-bottom:1rem ;
-    }
-}
-@media(max-width:375px){
-    #loader{
-         width: 50%;
-    }
-    .donate-container{
-        padding: 0 0 0 0;
-        padding-bottom:1rem ;
-    }
-}
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
 
-@media(max-width:320px){
-    #loader{
-         width: 50%;
-    }
-    .donate-container{
-        padding: 0 0 0 0;
-        padding-bottom:1rem ;
-    }
-    .copy-upi-btn{
-        padding: 0.2rem 2rem;
-    }
-}
+        /* Hover effect for the donate card */
+        .donate-container:hover {
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.9); /* Red glow effect */
+            transform: scale(1.05); /* Slight zoom effect */
+        }
 
+        @media(max-width:425px){
+            #loader{
+                width: 50%;
+            }
+            .donate-container{
+                padding: 0 0 0 0;
+                padding-bottom:1rem ;
+            }
+        }
+
+        @media(max-width:375px){
+            #loader{
+                width: 50%;
+            }
+            .donate-container{
+                padding: 0 0 0 0;
+                padding-bottom:1rem ;
+            }
+        }
+
+        @media(max-width:320px){
+            #loader{
+                width: 50%;
+            }
+            .donate-container{
+                padding: 0 0 0 0;
+                padding-bottom:1rem ;
+            }
+            .copy-upi-btn{
+                padding: 0.2rem 2rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div id="preloader">
         <img src="pic/load.gif" alt="Loading..." id="loader">
-      </div>
-      <video id="myVideo" width="0" height="0" style="display:none;" controls>
-        <source src="https://www.youtube.com/watch?v=DkrfsFB_nms" type="video/mp4">
-       
-    </video>
-    <video id="myVideo" width="0" height="0" style="display:none;" controls>
-        <source src="https://www.youtube.com/watch?v=DkrfsFB_nms" type="video/mp4">
-       
-    </video>
+    </div>
+
     <section class="donate" id="donate">
         <div class="donate-container">
             <h2>Support Me</h2>
@@ -250,141 +244,71 @@
             </div>
             <button class="copy-upi-btn" onclick="openAmountPopup()">Donate Now</button>
             <button class="copy-upi-btn" onclick="copyUPI()">Copy UPI ID</button>
-    
+
             <div id="donate-popup" class="popup">
                 <div class="popup-content">
                     <span class="close-btn" onclick="closePopup()">&times;</span>
                     <h2>Enter Details</h2>
                     <input type="text" id="name" placeholder="Enter your name" required>
-                    <input type="number" id="amount" placeholder="Enter amount (₹)" min="1" max="100000">
+                    <input type="number" id="amount" placeholder="Enter amount (₹)" min="1" max="1500" required>
                     <button class="pay-now-btn" onclick="redirectToUPI()">Pay Now</button>
                 </div>
             </div>
-    
+
             <div id="success-message" class="success-message">
                 <p>✅ Payment Successful! Thank you for your support. ❤️</p>
             </div>
         </div>
     </section>
 
-
-
     <script>
         window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    const mainContent = document.getElementById('main-content');
-  
-    preloader.style.display = 'none';
-    mainContent.style.display = 'block';
-  });
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'none';
+        });
 
+        function copyUPI() {
+            const upiId = "pkumariverma42@okaxis"; // Replace with your UPI ID
+            const tempInput = document.createElement("input");
+            document.body.appendChild(tempInput);
+            tempInput.value = upiId;
+            tempInput.select();
+            tempInput.setSelectionRange(0,1500);
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("UPI Copied!");
+        }
 
-  function copyUPI() {
-        // The UPI ID to be copied
-        const upiId = "pkumariverma42@okaxis";
-        
-        // Create a temporary input element to hold the UPI ID
-        const tempInput = document.createElement("input");
-        document.body.appendChild(tempInput);
-        
-        // Set the value of the input element to the UPI ID
-        tempInput.value = upiId;
-        
-        // Select the text in the input field
-        tempInput.select();
-        tempInput.setSelectionRange(0, 99999); // For mobile devices
-        
-        // Copy the selected text to clipboard
-        document.execCommand("copy");
-        
-        // Remove the temporary input element
-        document.body.removeChild(tempInput);
-        
-        // Show a popup alert saying UPI is copied
-        alert("UPI Copied!");
-    }
+        function openAmountPopup() {
+            document.getElementById("donate-popup").style.display = "flex";
+        }
 
-   function openAmountPopup() {
-        // Open the popup when Donate Now is clicked
-        document.getElementById("donate-popup").style.display = "flex";
-    }
+        function closePopup() {
+            document.getElementById("donate-popup").style.display = "none";
+        }
+        // Function to detect mobile devices
+function isMobile() {
+    return /Mobi|Android|iPhone|iPad|iPod|Windows Phone|BlackBerry|Mobile/i.test(navigator.userAgent);
+}
 
-    function closePopup() {
-        // Close the popup when the close button is clicked
-        document.getElementById("donate-popup").style.display = "none";
-    }
-
-    function handleUPIPayment() {
-    const amount = document.getElementById("amount").value;
+function redirectToUPI() {
     const name = document.getElementById("name").value;
-    
-    if (!amount || !name) {
-        alert("Please enter both amount and name");
+    const amount = document.getElementById("amount").value;
+
+    if (!name || !amount || isNaN(amount) || amount <= 0) {
+        alert("Please enter valid details (Name and Amount).");
         return;
     }
 
-    // Basic UPI details
-    const upiId = "pkumariverma42@okaxis";
-    const merchantName = encodeURIComponent("PRITI KUMARI SHRIVASTAV");
-    const note = encodeURIComponent(`Support from ${name}`);
-    const formattedAmount = parseFloat(amount).toFixed(2);
+    const upiId = "pkumariverma42@okaxis";  // Replace with your UPI ID
+    const upiLink = `upi://pay?pa=${upiId}&pn=${name}&mc=0000&tid=123456&url=https://aadityansha06.github.io/protfolio-webpage/donate.html&am=${amount}&cu=INR`;
 
-    // Create intent URL for specific apps
-    const intentUrls = {
-        gpay: `tez://upi/pay?pa=${upiId}&pn=${merchantName}&am=${formattedAmount}&cu=INR&tn=${note}`,
-        phonepe: `phonepe://pay?pa=${upiId}&pn=${merchantName}&am=${formattedAmount}&cu=INR&tn=${note}`,
-        paytm: `paytmmp://pay?pa=${upiId}&pn=${merchantName}&am=${formattedAmount}&cu=INR&tn=${note}`,
-        bhim: `upi://pay?pa=${upiId}&pn=${merchantName}&am=${formattedAmount}&cu=INR&tn=${note}`
-    };
-
-    // Show app selection
-    const paymentDialog = `
-        <div id="payment-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 999; display: flex; align-items: center; justify-content: center;">
-            <div style="background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 350px;">
-                <h3 style="margin-bottom: 15px; text-align: center;">Select Payment App</h3>
-                
-                <button onclick="openApp('${intentUrls.gpay}')" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #1a73e8; color: white; font-weight: bold;">
-                    Google Pay
-                </button>
-                
-                <button onclick="openApp('${intentUrls.phonepe}')" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #5f259f; color: white; font-weight: bold;">
-                    PhonePe
-                </button>
-                
-                <button onclick="openApp('${intentUrls.paytm}')" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #00b9f5; color: white; font-weight: bold;">
-                    Paytm
-                </button>
-                
-                <button onclick="openApp('${intentUrls.bhim}')" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #2db84c; color: white; font-weight: bold;">
-                    Other UPI Apps
-                </button>
-                
-                <button onclick="document.getElementById('payment-overlay').remove()" style="width: 100%; padding: 12px; margin: 5px 0; border: none; border-radius: 8px; background: #f1f1f1;">
-                    Cancel
-                </button>
-            </div>
-        </div>
-    `;
-
-    // Add dialog to body
-    const div = document.createElement('div');
-    div.innerHTML = paymentDialog;
-    document.body.appendChild(div.firstChild);
-}
-
-function openApp(url) {
-    // Try to open the app
-    const link = document.createElement('a');
-    link.href = url;
-    link.target = "_blank";
-    link.click();
-    
-    // Set timeout to check if app opened
-    setTimeout(() => {
-        if (document.hasFocus()) {
-            alert("Could not open payment app. Please try another app or scan the QR code.");
-        }
-    }, 1500);
+    // Check if running on a mobile device
+    if (isMobile()) {
+        window.location.href = upiLink;  // Open UPI link if on mobile
+    } else {
+        alert("Please use a UPI payment app on your mobile to complete the payment.");
+    }
 }
 
     </script>
