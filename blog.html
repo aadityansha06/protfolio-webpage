@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Aadityansha</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <style>
             #preloader {
             position: fixed;
@@ -38,15 +39,44 @@
 
         /* General Styling */
 /* General Styling */
+:root{
+    --main-color: rgba(255,0,0,0.9);
+}
+/* Ensure full width */
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Fix container width */
+#blog-container, #posts, .post {
+    max-width: 100%;
+}
+
+/* Fix unnecessary margins/padding */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fix elements exceeding viewport */
+* {
+    max-width: 100%;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: black;
     color: white;
     margin: 0;
     padding: 0;
+    width: 100%;
 }
 
+
 header {
+    width: 100%;
     background-color: rgba(255, 0, 0, 0.9);
     padding: 20px;
     text-align: center;
@@ -135,15 +165,96 @@ h1 {
 }
 
 /* Footer */
-footer {
-  
-    background-color: rgba(255, 0, 0, 0.9);
-    color: white;
-    text-align: center;
-    padding: 10px;
-  
+.footer {
+    position: relative;
     bottom: 0;
     width: 100%;
+    padding: 2.5rem 0;
+    background: rgba(150, 46, 46, 0.508) ;
+    opacity: 0.5;
+   /* Slightly itransparentncreased opacity for a better contrast */
+  }
+  
+  .footer .social {
+    z-index: 1;
+    text-align: center;
+    padding-bottom: 1.7rem;
+    color: var(--main-color);
+  }
+  
+  .footer .social a {
+    font-size: 1.8rem;
+    color: var(--main-color);
+    border: 0.3rem solid var(--main-color);
+    width: 2rem;
+    height: 2rem;
+    line-height: 2.5rem;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 0.60rem;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .footer .social a:hover {
+    transform: scale(1.4) translateY(-10px); /* Smooth scale and move up effect */
+    background-color: var(--main-color); /* You can define this color elsewhere */
+    color: black;
+    box-shadow: 0 0 25px var(--main-color);
+  }
+
+  
+  .footer .list {
+    line-height: 1.6;
+    text-align: center;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+   
+    
+}
+
+.footer .list li {
+    margin-bottom: 1rem; /* Space between each list item */
+}
+
+.footer .list a {
+    color: #ffff; /* Default color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.4rem;
+    font-weight: 500;
+    position: relative; /* Position for the pseudo-element */
+    padding: 0.2rem 0; /* Some padding for the underline effect */
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+.footer .list a::after {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%; /* Start with no width */
+    height: 2px; /* Height of the underline */
+    background-color: var(--main-color); /* Red color for the underline */
+    transition: width 0.3s ease; /* Smooth width transition */
+  
+}
+
+.footer .list a:hover {
+    transform: scaleZ(-100);
+    color: var(--main-color); /* Red color on hover */
+}
+
+.footer .list a:hover::after {
+    width: 100%; /* Expand the underline to full width on hover */
+}
+
+.footer .copyright {
+    padding-top: 1.5rem;
+    color: #fff;
+    font-size: 1.02rem;
+    font-weight: 500;
+  text-align: center;
 }
 @media (max-width: 768px) {
     .post {
@@ -182,9 +293,34 @@ footer {
     async>
 </script>
     
-    <footer>
-        <p>&copy; 2025 Aadityansha | All Rights Reserved</p>
-    </footer>
+<footer class="footer">
+    <div class="social">
+        <a href="https://github.com/aadityansha06" target="_blank"><i class='bx bxl-github'></i></a>
+        <a href="https://www.linkedin.com/in/aadityansha-verma-a4a35a213/" target="_blank"><i class='bx bxl-linkedin-square'></i></a>
+        <a href="https://t.me/aadityansha" target="_blank"><i class='bx bxl-telegram'></i></a>
+
+    </div>
+    <ul class="list">
+        
+        <li>
+            <a href="index.html#home">Home</a>
+            
+        </li>
+
+      
+
+        <li>
+            <a href="donate.html" target="_blank">Donate</a>
+        </li>
+
+    </ul>
+
+<p class="copyright">
+    AADITYANSHA VERMA | Copyright &#169; 2025-26 | All Rights Reserved 
+</p>
+
+</footer>
+
    <script>
     window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');

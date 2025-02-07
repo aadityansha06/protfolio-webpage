@@ -53,6 +53,15 @@
             "video": "https://www.youtube.com/embed/kvV2N2l9s0k",
             "link": "https://www.cio.com/article/286905/cloud-computing-5-ways-it-will-transform-businesses-in-2023.html",
             "tags": ["Cloud Computing", "Business Technology", "SaaS", "Digital Transformation"]
+        },
+        {
+            "title":"DeepSeek: Advancing AI with Open-Source Innovation",
+            "author":"Aadityansha",
+            "date":"2025-02-07",
+            "content":"Introduction Artificial intelligence has rapidly evolved, with models like GPT and Gemini leading the charge. However, a new player, DeepSeek, is gaining attention for its powerful capabilities and open-source approach. DeepSeek aims to bridge the gap between advanced AI models and accessibility, making AI research and development more inclusive. <h3>What is DeepSeek? and feautres</h3><br>DeepSeek is an open-source large language model (LLM) designed for high-performance AI applications. Unlike proprietary models that limit accessibility, DeepSeek provides researchers and developers with a freely available, high-quality AI model. It is trained on massive datasets and optimized for efficiency, making it a promising alternative to commercial AI models.",
+            "link":"https://deepseek.com/",
+            "image":"https://krebsonsecurity.com/wp-content/uploads/2025/02/deepseek-768x428.png"
+
         }
     
   
