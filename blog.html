@@ -111,7 +111,22 @@
         @media (max-width: 768px) {
             #scrollTop { display: block; }
         }
-        
+        .read-more {
+    background-color: rgba(255, 0, 0, 0.9);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: inline-block;
+}
+
+.read-more:hover {
+    background-color: rgba(255, 0, 0, 1);
+    transform: scale(1.1);
+}
         /* Footer */
         .footer {
             width: 100%;
