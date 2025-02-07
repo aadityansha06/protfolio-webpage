@@ -6,227 +6,138 @@
     <title>Blog - Aadityansha</title>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <style>
-            #preloader {
+        :root {
+            --main-color: rgba(255,0,0,0.9);
+        }
+        
+        /* Preloader */
+        #preloader {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black; /* Background color while loading */
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: black;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999; /* Ensure it appears above other elements */
+            z-index: 9999;
         }
-
         #loader {
-            width: 30%; /* Adjust size as needed */
+            width: 30%;
         }
-
-        ::-webkit-scrollbar{
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-thumb{
-            background-color: rgba(255, 0, 0, 0.9);
-        }
-
-        ::-webkit-scrollbar-track{
-            background-color: black;
-            width: 300px;
-            border-radius: 20px;
-        }
-
-        /* General Styling */
-/* General Styling */
-:root{
-    --main-color: rgba(255,0,0,0.9);
-}
-/* Ensure full width */
-html, body {
-    width: 100%;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
+        html, body {
+        width: 100%;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
 
 /* Fix container width */
-#blog-container, #posts, .post {
-    max-width: 100%;
-}
-
-/* Fix unnecessary margins/padding */
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Fix elements exceeding viewport */
-* {
-    max-width: 100%;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: black;
-    color: white;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}
-
-
-header {
-    width: 100%;
-    background-color: rgba(255, 0, 0, 0.9);
-    padding: 20px;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2em;
-    color:black;
-    font-weight: 700;
-}
-
-#blog-container {
-    padding: 20px;
-    text-align: center;
-}
-
-h1 {
-    color: rgba(255, 0, 0, 0.9);
-}
-
-#posts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.post {
-    background-color: rgba(255, 0, 0, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
-    width: 300px;
-    margin: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-}
-
-.post:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 30px rgba(255, 0, 0, 1);
-}
-
-.post h2 {
-    color: rgba(255, 0, 0, 0.9);
-}
-
-.post small {
-    color: #bbb;
-    font-size: 0.9em;
-}
-
-.post p {
-    color: #ddd;
-    font-size: 1em;
-}
-
-.read-more {
-    background-color: rgba(255, 0, 0, 0.9);
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    display: inline-block;
-}
-
-.read-more:hover {
-    background-color: rgba(255, 0, 0, 1);
-    transform: scale(1.1);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    #posts {
-        flex-direction: column;
-        gap: 15px;
+    #blog-container, #posts, .post {
+         max-width: 100%;
     }
-
-    .post {
-        width: 100%;
-    }
-    .footer{
-        background: rgba(150, 46, 46, 0.508) ;
-        opacity: 1;
-    }
-}
-
-/* Footer */
-.footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    padding: 2.5rem 0;
-    background: rgba(150, 46, 46, 0.508) ;
-    opacity: 0.5;
-   /* Slightly itransparentncreased opacity for a better contrast */
-  }
-  
-  .footer .social {
-    z-index: 1;
-    text-align: center;
-    padding-bottom: 1.7rem;
-    color: var(--main-color);
-  }
-  
-  .footer .social a {
-    font-size: 1.8rem;
-    color: var(--main-color);
-    border: 0.3rem solid var(--main-color);
-    width: 2rem;
-    height: 2rem;
-    line-height: 2.5rem;
-    display: inline-block;
-    text-align: center;
-    border-radius: 50%;
-    margin: 0 0.60rem;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .footer .social a:hover {
-    transform: scale(1.4) translateY(-10px); /* Smooth scale and move up effect */
-    background-color: var(--main-color); /* You can define this color elsewhere */
-    color: black;
-    box-shadow: 0 0 25px var(--main-color);
-  }
-
-  
-  .footer .list {
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-thumb { background-color: var(--main-color); }
+        ::-webkit-scrollbar-track { background-color: black; border-radius: 30px; }
+        
+        /* General Styling */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            width: 100%;
+            background-color: var(--main-color);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        header h1 { color: black; font-weight: 700; }
+        
+        #blog-container {
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+        }
+        
+        #posts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .post {
+            background-color: rgba(255, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .post:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 1);
+        }
+        
+        /* Scroll to Top Button */
+        #scrollTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--main-color);
+            color: white;
+            border: none;
+          
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.7rem;
+            display: none;
+            transition: transform 0.3s ease;
+        }
+        #scrollTop:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Show Scroll Button only on Mobile */
+        @media (max-width: 768px) {
+            #scrollTop { display: block; }
+        }
+        
+        /* Footer */
+        .footer {
+            width: 100%;
+            background: rgba(90, 10, 10, 0.4);
+            text-align: center;
+            padding: 2.5rem 0;
+        }
+        .footer .list {
     line-height: 1.6;
     text-align: center;
     padding: 0;
-    margin-top: 0;
+    margin-top: 1.5rem;
     margin-bottom: 0;
    
     
 }
 
 .footer .list li {
-    margin-bottom: 1rem; /* Space between each list item */
+    margin-bottom: 0.8rem; /* Space between each list item */
 }
 
 .footer .list a {
     color: #ffff; /* Default color */
     text-decoration: none; /* Remove underline */
-    font-size: 1.4rem;
-    font-weight: 500;
+    font-size: 1.3rem;
+    font-weight: 600;
     position: relative; /* Position for the pseudo-element */
     padding: 0.2rem 0; /* Some padding for the underline effect */
     transition: color 0.3s ease; /* Smooth transition for text color */
@@ -252,87 +163,87 @@ h1 {
 .footer .list a:hover::after {
     width: 100%; /* Expand the underline to full width on hover */
 }
-
-.footer .copyright {
-    padding-top: 1.5rem;
-    color: #fff;
-    font-size: 1.02rem;
-    font-weight: 500;
-  text-align: center;
-}
-@media (max-width: 768px) {
-    .post {
-        width: 45%; /* Two posts per row on medium screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .post {
-        width: 85%; /* One post per row on small screens */
-    }
-}
-
-
+        .footer .social a {
+            font-size: 1.5rem;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
+            width: 2.5rem;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            display: inline-block;
+            text-align: center;
+            border-radius: 50%;
+            margin: 0 0.5rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .footer .social a:hover {
+            transform: scale(1.3) translateY(-3px);
+            background-color: var(--main-color);
+            color: black;
+        }
     </style>
 </head>
 <body>
     <div id="preloader">
         <img src="pic/load.gif" alt="Loading..." id="loader">
     </div>
+    
     <header>
-        <nav>
-            <h1>Blog Section </h1>
-        </nav>
+        <h1>Blog Section</h1>
     </header>
     
     <section id="blog-container">
-      
         <div id="posts"></div>
     </section>
-    <script src="https://utteranc.es/client.js"
-    repo="aadityansha06/protfolio-webpage"
-    issue-term="title"
-    theme="github-dark"
-    crossorigin="anonymous"
-    async>
-</script>
     
-<footer class="footer">
-    <div class="social">
-        <a href="https://github.com/aadityansha06" target="_blank"><i class='bx bxl-github'></i></a>
-        <a href="https://www.linkedin.com/in/aadityansha-verma-a4a35a213/" target="_blank"><i class='bx bxl-linkedin-square'></i></a>
-        <a href="https://t.me/aadityansha" target="_blank"><i class='bx bxl-telegram'></i></a>
-
-    </div>
-    <ul class="list">
-        
-        <li>
-            <a href="index.html#home">Home</a>
-            
-        </li>
-
-      
-
-        <li>
-            <a href="donate.html" target="_blank">Donate</a>
-        </li>
-
-    </ul>
-
-<p class="copyright">
-    AADITYANSHA VERMA | Copyright &#169; 2025-26 | All Rights Reserved 
-</p>
-
-</footer>
-
-   <script>
-    window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            preloader.style.display = 'none';
+    <button id="scrollTop" onclick="scrollToTop()">
+        <i class='bx bx-chevron-up'></i>
+    </button>
+    
+    <footer class="footer">
+        <div class="social">
+            <a href="https://github.com/aadityansha06" target="_blank"><i class='bx bxl-github'></i></a>
+            <a href="https://www.linkedin.com/in/aadityansha-verma-a4a35a213/" target="_blank"><i class='bx bxl-linkedin-square'></i></a>
+            <a href="https://t.me/aadityansha" target="_blank"><i class='bx bxl-telegram'></i></a>
+        </div>
+        <ul class="list">
+            <li>
+                <a href="index.html#home">Home</a>
+                            
+            </li>
+            <li>
+                <a href="donate.html">Donate</a>
+                
+            </li>
+            </ul>
+        <p class="copyright">
+            AADITYANSHA VERMA | Copyright &#169; 2025-26 | All Rights Reserved
+        </p>
+    </footer>
+    
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').style.display = 'none';
+            }, 500);
         });
-
-   </script>
+        
+        // Scroll to Top Function
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Hide Scroll Button when at Top
+        window.addEventListener('scroll', () => {
+            const scrollTopBtn = document.getElementById('scrollTop');
+            if (window.scrollY > 300) {
+                scrollTopBtn.style.display = 'block';
+            } else {
+                scrollTopBtn.style.display = 'none';
+            }
+        });
+    </script>
     <script src="blog.js" defer></script>
-   
 </body>
 </html>
