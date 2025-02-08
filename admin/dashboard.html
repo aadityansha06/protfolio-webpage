@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-Dashboard</title>
+    <meta name="description" content="Read insightful articles on web development, backend technologies, and programming tips. Stay updated with the latest trends.">
+    <meta name="keywords" content="web development, programming, backend development, coding, JavaScript, Linux, C++, technology blog">
+    <meta name="author" content="Aadityansha">
+    
+    <!-- Open Graph (for Facebook, LinkedIn, etc.) -->
+    <meta property="og:title" content="Aadityansha | Blog - Web Development & Programming">
+    <meta property="og:description" content="Explore expert articles on backend development, web design, and programming trends.">
+    <meta property="og:image" content="https://aadityansha06.github.io/protfolio-webpage/images/blog-banner.png">
+    <meta property="og:url" content="https://aadityansha06.github.io/protfolio-webpage/blog.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aadityansha | Blog - Web Development & Programming">
+    <meta name="twitter:description" content="Expert articles on backend development, web design, and programming trends.">
+    <meta name="twitter:image" content="https://aadityansha06.github.io/protfolio-webpage/images/blog-banner.png">
+
+    <!-- Canonical URL (Avoid Duplicate Content Issues) -->
+    <link rel="canonical" href="https://aadityansha06.github.io/protfolio-webpage/blog.html">
+
+       <!-- Favicon for Browsers -->
+<link rel="icon" type="image/png" href="../pic/head.png">
+
+<!-- Apple Touch Icon (For iPhones, iPads) -->
+<link rel="apple-touch-icon" href="../pic/head.png">
+
+<!-- Favicon for Microsoft Edge and Windows -->
+<meta name="msapplication-TileImage" content="../pic/head.png">
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black; /* Background color while loading */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Ensure it appears above other elements */
+        }
+
+        #loader {
+            width: 30%; /* Adjust size as needed */
+        }
+
+body {
+    font-family: Arial, sans-serif;
+
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);/* Dark background for contrast */
+   /* Optional: Add a background image */
+    background-size: cover;
+    background-position: center;
+  /* Apply blur effect */
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+        .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 0, 0, 0.9);
+    padding: 15px 30px;
+}
+
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-links a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar-links a:hover {
+    text-decoration: underline;
+}
+
+.welcome-message {
+    color: #ccc;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.welcome-message h1 {
+    font-size: 36px;
+}
+
+.welcome-message p {
+    font-size: 18px;
+}
+
+.blog-form-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgba(255, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.blog-form-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button.btn-post {
+    width: 100%;
+    padding: 12px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button.btn-post:hover {
+    background-color: rgba(255, 0, 0, 0.9);
+    transition: background-color 0.3s;
+}
+
+
+button.btn-update{
+    margin-top: 2rem;
+    width: 100%;
+    padding: 12px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button.btn-update:hover {
+    background-color: rgba(255, 0, 0, 0.9);
+    transition: background-color 0.3s;
+}
+#posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.post-item {
+    background-color: rgba(255, 0, 0, 0.1); /* Light red background */
+    padding: 15px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.post-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+}
+
+.post-item h3 {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.post-item p {
+    color: white;
+    font-size: 14px;
+}
+
+.post-item img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.btn-delete {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.btn-delete:hover {
+    background-color: rgba(255, 0, 0, 0.9);
+}
+
+
+    </style>
+</head>
+<body>
+    <div id="preloader">
+        <img src="../pic/load.gif" alt="Loading..." id="loader">
+    </div>
+    
+<nav class="navbar">
+    <div class="navbar-logo">Admin Panel</div>
+    <div class="navbar-links">
+        <a href="../index.html">Home</a>
+        <a href="../blog.html">Blogs</a>
+        <a href="#" id="logout">Logout</a>
+    </div>
+</nav>
+
+<!-- Welcome Message -->
+<div class="welcome-message">
+    <h1>Welcome, Admin!</h1>
+  
+</div>
+
+<!-- Blog Post Form -->
+
+<div class="blog-form-container">
+    <h2>Create New Blog Post</h2>
+    <form id="blog-form" onsubmit="submitBlog(event)">
+        <label for="author">Author Name:</label>
+        <input type="text" id="author" name="author" required placeholder="Enter author name">
+        <label for="author">Date</label>
+        <input type="date" id="date" name="date"required >
+
+        <label for="title">Post Title:</label>
+        <input type="text" id="title" name="title" required placeholder="Enter post title">
+
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" rows="10" required placeholder="Write your content here"></textarea>
+
+        <label for="image">Image URL:</label>
+        <input type="url" id="image" name="image" placeholder="Optional: Enter image URL">
+
+        <label for="video">Video URL:</label>
+        <input type="url" id="video" name="video" placeholder="Optional: Enter video URL">
+
+        <button type="submit"class="btn-post" id="btn-post">Publish Post</button>
+        <button id="Update_btn"class="btn-update" onclick="updatePost()">Update Post</button>
+    </form>
+</div>
+</div>
+<!-- Blog Posts List -->
+<div class="blog-posts">
+    <h2>Existing Blog Posts</h2>
+    <div id="posts-container">
+        
+    </div> 
+</div>
+
+<script>
+     window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'none';
+        });
+</script>
+<script type="module" src="admin_work.js"></script>
+</body>
+</html>

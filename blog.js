@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.opacity = "0";
     document.body.style.transform = "translateY(20px)";
     setTimeout(() => {
-        document.body.style.transition = "opacity 1s ease-out, transform 1s ease-out";
+        document.body.style.transition = "opacity 1s ease-out, transform 2s ease-out";
         document.body.style.opacity = "1";
         document.body.style.transform = "translateY(0)";
     }, 100);
@@ -26,8 +26,8 @@ async function fetchPosts() {
             const postElement = document.createElement("div");
             postElement.classList.add("post");
             postElement.style.opacity = "0";
-            postElement.style.transform = "translateY(20px)";
-            postElement.style.transition = "opacity 0.8s ease-out, transform 0.8s ease-out";
+            postElement.style.transform = "translateY(30px)";
+            postElement.style.transition = "opacity 2s ease-out, transform 2s ease-out";
 
             let postContent = `
                 <h2>${post.title}</h2>
