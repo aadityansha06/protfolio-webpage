@@ -141,7 +141,10 @@ input:focus {
     <div class="login-container">
         <div class="login-card">
             <h2>Admin Panel Login</h2>
-            <form action="#" method="POST">
+            <form action="#" method="POST" onsubmit="loginUser(event)">
+               <!--<label>Name</label>
+                <input type="text" id="name"  required placeholder="Enter Your respected name ">---> 
+
                 <label for="uid">User ID:</label>
                 <input type="email" id="email" name="email" required placeholder="Ex- yourname@admin-no.in">
 
@@ -160,5 +163,28 @@ input:focus {
 
 
     <script type="module" src="admin_work.js"></script>
+<!--
+    <script>
+        function loginUser(event) {
+    event.preventDefault(); // Prevent form submission
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    if (name === "" || email === "" || password === "") {
+        alert("Please fill in all fields!");
+        return;
+    }
+
+    // Store name in localStorage
+    localStorage.setItem("userName", name);
+
+    // Redirect to dashboard.html
+    window.location.href = "dashboard.html";
+}
+
+     </script>-->
+     
 </body>
 </html>

@@ -127,7 +127,11 @@ body {
     margin-bottom: 20px;
     text-align: center;
 }
-
+.blog-posts h2{
+    color: #ffff;
+    text-align: center;
+    margin-bottom:2rem;
+}
 label {
     display: block;
     font-size: 14px;
@@ -213,7 +217,14 @@ button.btn-update:hover {
     color: white;
     font-size: 14px;
 }
-
+.hint{
+    color: #ffff;
+    margin-top: 2.5rem;
+    line-height: 2;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 0 10 rgba(0, 0, 0, 0.5);
+}
 .post-item img {
     max-width: 100%;
     border-radius: 5px;
@@ -221,7 +232,7 @@ button.btn-update:hover {
 }
 
 .btn-delete {
-    background-color: black;
+    background-color: red;
     color: white;
     border: none;
     padding: 10px;
@@ -229,10 +240,15 @@ button.btn-update:hover {
     border-radius: 5px;
     margin-top: 10px;
     display: inline-block;
+    transition: transform 0.5s ease-in-out;
 }
-
+@media(max-width:400px){
+    .navbar{
+        padding: 15px 10px;
+    }
+}
 .btn-delete:hover {
-    background-color: rgba(255, 0, 0, 0.9);
+   transform: scale(1.2);
 }
 
 
@@ -253,10 +269,10 @@ button.btn-update:hover {
 </nav>
 
 <!-- Welcome Message -->
-<div class="welcome-message">
+<div class="welcome-message" id="welcomeMessage">
     <h1>Welcome, Admin!</h1>
-  
 </div>
+
 
 <!-- Blog Post Form -->
 
@@ -267,6 +283,7 @@ button.btn-update:hover {
         <input type="text" id="author" name="author" required placeholder="Enter author name">
         <label for="author">Date</label>
         <input type="date" id="date" name="date"required >
+        <input type="hidden" id="postId">
 
         <label for="title">Post Title:</label>
         <input type="text" id="title" name="title" required placeholder="Enter post title">
@@ -281,24 +298,36 @@ button.btn-update:hover {
         <input type="url" id="video" name="video" placeholder="Optional: Enter video URL">
 
         <button type="submit"class="btn-post" id="btn-post">Publish Post</button>
-        <button id="Update_btn"class="btn-update" onclick="updatePost()">Update Post</button>
+        <button id="update-button" style="display: none;">Update Post</button>
+     <p class="hint"> To insert a link -> [Source](https://example.com)<br>
+        ## Small Heading → Small Heading (H3)<br>
+            ### Subheading → Subheading (H4)
+    </p>
     </form>
 </div>
 </div>
 <!-- Blog Posts List -->
 <div class="blog-posts">
-    <h2>Existing Blog Posts</h2>
+    <h2>Existing Blog Posts Preview</h2>
     <div id="posts-container">
         
     </div> 
 </div>
+<script type="module" src="admin_work.js"></script>
 
 <script>
      window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             preloader.style.display = 'none';
         });
+      /*  window.addEventListener("DOMContentLoaded", () => {
+    const userName = localStorage.getItem("userName") || "Admin"; // Get stored name
+
+    document.getElementById("welcomeMessage").innerHTML = `<h1>Welcome, ${userName}!</h1>`;
+});
+*/
+
 </script>
-<script type="module" src="admin_work.js"></script>
+
 </body>
 </html>

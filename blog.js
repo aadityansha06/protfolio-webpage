@@ -1,105 +1,87 @@
-document.addEventListener("DOMContentLoaded", () => {
-    document.body.style.opacity = "0";
-    document.body.style.transform = "translateY(20px)";
-    setTimeout(() => {
-        document.body.style.transition = "opacity 1s ease-out, transform 2s ease-out";
-        document.body.style.opacity = "1";
-        document.body.style.transform = "translateY(0)";
-    }, 100);
+// Firebase SDK Imports (Correct way)
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
 
-    fetchPosts();
-    window.addEventListener("scroll", revealPosts);
-});
+// Firebase Configuration (Replace with your details)
+const firebaseConfig = {
+    apiKey: "AIzaSyCwxnphK6dI8yGHbF7NGgIDZHdy_04O_5M",
+    authDomain: "admin-cf33c.firebaseapp.com",
+    projectId: "admin-cf33c",
+    storageBucket: "admin-cf33c.firebasestorage.app",
+    messagingSenderId: "684652395514",
+    appId: "1:684652395514:web:782a62390a2f5577da8243"
+};
 
-async function fetchPosts() {
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Function to Fetch and Display Blog Posts
+async function fetchBlogs() {
+    const postsContainer = document.getElementById("posts");
+    postsContainer.innerHTML = ""; // Clear previous content
+
     try {
-        const response = await fetch("posts.json");
-        if (!response.ok) {
-            throw new Error("Failed to fetch posts.");
+        const querySnapshot = await getDocs(collection(db, "blogPosts"));
+
+        if (querySnapshot.empty) {
+            postsContainer.innerHTML = "<p>No blog posts available.</p>";
+            return;
         }
-        const posts = await response.json();
 
-        const postsContainer = document.getElementById("posts");
-        postsContainer.innerHTML = ""; 
+        querySnapshot.forEach((doc) => {
+            const blogData = doc.data();
 
-        posts.forEach((post) => {
-            const postElement = document.createElement("div");
-            postElement.classList.add("post");
-            postElement.style.opacity = "0";
-            postElement.style.transform = "translateY(30px)";
-            postElement.style.transition = "opacity 2s ease-out, transform 2s ease-out";
+            // Create Blog Post Card
+            const blogPost = document.createElement("div");
+            blogPost.classList.add("post");
 
-            let postContent = `
-                <h2>${post.title}</h2>
-                <small>${post.date} | By ${post.author}</small>
+            let shortContent = blogData.content.split(" ").slice(0, 60).join(" ") + "..."
+            .replace(/\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank" style="color:red; font-size:0.9rem; display:block;">$1</a>') 
+            .replace(/^## (.*)$/gm, '<h3 style="color: white; margin-top:1rem;">$1</h3>') 
+            .replace(/^### (.*)$/gm, '<h4 style="color: white; margin-top:1rem;">$1</h4>') 
+            .replace(/\n/g, '<br>'); 
+            
+            let fullContent = blogData.content
+                .replace(/\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank" style="color:red; font-size:0.9rem; display:block;">$1</a>') 
+                .replace(/^## (.*)$/gm, '<h3 style="color: white; margin-top:1rem;">$1</h3>') 
+                .replace(/^### (.*)$/gm, '<h4 style="color: white; margin-top:1rem;">$1</h4>') 
+                .replace(/\n/g, '<br>'); 
+
+            blogPost.innerHTML = `
+                <h3 style="color: white;">${blogData.title}</h3>
+                <p style="color: white;"><b>Author:</b> ${blogData.author}  |  <b>Date:</b> ${blogData.date}</p>
+                ${blogData.image ? `<img src="${blogData.image}" alt="Blog Image" style="width:100%" class="blog-image">` : ""}
+                ${blogData.video ? `<a href="${blogData.video}" target="_blank" style="color:yellow " class="video-link">Watch Video</a>` : ""}
+                <div class="blog-content" style="color: white; margin-top: 1rem; max-height: 100px; overflow: hidden;">
+                    ${shortContent}
+                </div>
+                <br>
+                <button class="read-more">Read More</button>
             `;
 
-            if (post.image) {
-                postContent += `
-                    <img src="${post.image}" alt="${post.title}" style="width:100%; margin-top: 10px; border-radius: 8px;">
-                `;
-            }
+            postsContainer.appendChild(blogPost);
 
-            postContent += `
-                <p class="preview">${post.content.substring(0, 150)}...</p>
-                <p class="full-content" style="display: none;">${post.content}</p>
-            `;
+            const readMoreBtn = blogPost.querySelector(".read-more");
+            const blogContent = blogPost.querySelector(".blog-content");
 
-            if (post.link) {
-                postContent += `
-                    <a href="${post.link}" target="_blank" class="read-more-link" style="font-size: 1.5rem; color:red; text-decoration:none;">Source</a>
-                `;
-            }
-
-            if (post.tags && post.tags.length > 0) {
-                postContent += `
-                    <div class="tags">
-                        <strong>Tags:</strong> ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(", ")}
-                    </div>
-                `;
-            }
-
-            postContent += `
-                <button class="read-more" onclick="toggleContent(this)">Read More</button>
-                <hr>
-            `;
-
-            postElement.innerHTML = postContent;
-            postsContainer.appendChild(postElement);
+            readMoreBtn.addEventListener("click", function () {
+                if (readMoreBtn.innerText === "Read More") {
+                    blogContent.style.maxHeight = "none";
+                    blogContent.innerHTML = fullContent;
+                    readMoreBtn.innerText = "Read Less";
+                } else {
+                    blogContent.style.maxHeight = "100px"; // Restrict height to maintain consistency
+                    blogContent.innerHTML = shortContent;
+                    readMoreBtn.innerText = "Read More";
+                }
+            });
         });
 
-        revealPosts();
     } catch (error) {
-        console.error("Error fetching posts:", error);
-        document.getElementById("posts").innerHTML = "<p>Error loading posts. Try again later.</p>";
+        console.error("Error fetching blogs:", error);
+        postsContainer.innerHTML = "<p>Error loading blog posts.</p>";
     }
 }
 
-function revealPosts() {
-    const posts = document.querySelectorAll(".post");
-    const windowHeight = window.innerHeight;
-    posts.forEach(post => {
-        const postTop = post.getBoundingClientRect().top;
-        if (postTop < windowHeight - 50) {
-            post.style.opacity = "1";
-            post.style.transform = "translateY(0)";
-        }
-    });
-}
-
-function toggleContent(button) {
-    const post = button.closest(".post");
-    const preview = post.querySelector(".preview");
-    const fullContent = post.querySelector(".full-content");
-    const readMoreButton = post.querySelector(".read-more");
-
-    if (fullContent.style.display === "none") {
-        fullContent.style.display = "block";
-        preview.style.display = "none";
-        readMoreButton.textContent = "Read Less";
-    } else {
-        fullContent.style.display = "none";
-        preview.style.display = "block";
-        readMoreButton.textContent = "Read More";
-    }
-}
+fetchBlogs();

@@ -3,7 +3,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebas
 import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
 
-
 // Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCwxnphK6dI8yGHbF7NGgIDZHdy_04O_5M",
@@ -14,13 +13,11 @@ const firebaseConfig = {
     appId: "1:684652395514:web:782a62390a2f5577da8243"
 };
 
-// Initialize Firebase app and authentication
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore();
+const db = getFirestore(app);
 const postsCollection = collection(db, "blogPosts"); // Reference to Firestore collection
-
-
 
 // Login function
 function loginuser(event) {
@@ -30,8 +27,7 @@ function loginuser(event) {
     
     signInWithEmailAndPassword(auth, email, pass)
         .then((userCredential) => {
-            const user = userCredential.user;
-            console.log("User ID:", user.uid);
+            console.log("User ID:", userCredential.user.uid);
             window.location.href = "dashboard.html"; // Redirect to dashboard after successful login
         })
         .catch((error) => {
@@ -46,19 +42,15 @@ if (login_btn) {
     login_btn.addEventListener('click', loginuser);
 }
 
-
-
 // Logout function for anchor tag <a>
 const logoutBtn = document.querySelector('#logout');
 if (logoutBtn) {
     logoutBtn.addEventListener('click', (event) => {
-        // Prevent the default action of the anchor tag (which would navigate somewhere)
         event.preventDefault();
-
         signOut(auth)
             .then(() => {
                 alert('You have logged out successfully.');
-                window.location.href = 'admin.html'; // Redirect to login page after sign-out
+                window.location.href = 'admin.html'; // Redirect to login page
             })
             .catch((error) => {
                 console.error("Error during sign out:", error);
@@ -67,12 +59,7 @@ if (logoutBtn) {
     });
 }
 
-
-
-// blog section code
-
-
-//add post
+// Add post function
 document.getElementById("blog-form").addEventListener("submit", async (event) => {
     event.preventDefault(); // Prevent form refresh
 
@@ -83,9 +70,6 @@ document.getElementById("blog-form").addEventListener("submit", async (event) =>
     const date = document.getElementById("date").value.trim();
     const image = document.getElementById("image").value.trim();
     const video = document.getElementById("video").value.trim();
-
-    // Debugging logs
-    console.log("Form Data:", { title, author, content, date, image, video });
 
     // Validate required fields
     if (!title || !author || !content || !date) {
@@ -104,56 +88,15 @@ document.getElementById("blog-form").addEventListener("submit", async (event) =>
         });
 
         alert("Post added successfully!");
-        fetchPosts(); // Refresh the post list
+        fetchPosts(); // Refresh post list
         document.getElementById("blog-form").reset(); // Clear form fields
-
     } catch (error) {
         console.error("Error adding post:", error);
         alert("Failed to add post! Error: " + error.message);
     }
 });
 
-
-
-//edit post 
-let editPostId = null; // Store post ID when editing
-
-async function updatePost() {
-    if (!editPostId) {
-        alert("No post selected for updating!");
-        return;
-    }
-
-    const title = document.getElementById("title").value;
-    const content = document.getElementById("content").value;
-    const author = document.getElementById("author").value;
-    const date = document.getElementById("date").value;
-    const image = document.getElementById("image").value;
-    const video = document.getElementById("video").value;
-
-    try {
-        const postRef = doc(db, "blogPosts", editPostId);
-        await updateDoc(postRef, {
-            title,
-            content,
-            author,
-            date,
-            image,
-            video
-        });
-
-        alert("Post updated successfully!");
-        editPostId = null; // Reset edit mode
-        fetchPosts(); // Refresh posts
-        document.getElementById("blog-form").reset(); // Clear form
-    } catch (error) {
-        console.error("Error updating post:", error);
-        alert("Failed to update post!");
-    }
-}
-
-
-// delet post
+// Fetch and display posts
 async function fetchPosts() {
     const postsContainer = document.getElementById("posts-container");
     postsContainer.innerHTML = ""; // Clear previous posts
@@ -163,24 +106,31 @@ async function fetchPosts() {
         const post = doc.data();
         const postId = doc.id;
 
-        // Ensure fields are properly assigned to avoid "undefined"
+        // Ensure fields are properly assigned
         const title = post.title || "No Title";
         const author = post.author || "Unknown Author";
+        const image = post.image ? `<img src="${post.image}" width="100%">` : "";
         const content = post.content || "No content available.";
         const date = post.date || "No Date";
-        const image = post.image ? `<img src="${post.image}" width="100">` : "";
         const video = post.video ? `<a href="${post.video}" target="_blank" style="color: yellow;">Watch Video</a>` : "";
 
-        // Create post container with a delete button
+        // Create post container with delete button
         const postElement = document.createElement("div");
         postElement.classList.add("post-item");
 
         postElement.innerHTML = `
             <h3 style="color: white;">${title}</h3>
-            <p style="color: white;"><b>Author:</b> ${author} | <b>Date:</b> ${date}</p>
-            <p style="color: white;">${content}</p>
+            <p style="color: white;"><b>Author:</b> ${author}  |  <b>Date:</b> ${date}</p>
             ${image}
             ${video}
+            <div style="color: white; margin-top: 1rem;">
+                ${content
+                    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g, '<a href="$2" target="_blank" style="color:red; font-size:0.9rem; display:block;">$1</a>') // Convert links
+                    .replace(/^## (.*)$/gm, '<h3 style="color: white; margin-top:1rem;">$1</h3>') // Convert ## to <h3>
+                    .replace(/^### (.*)$/gm, '<h4 style="color: white; margin-top:1rem;">$1</h4>') // Convert ### to <h4>
+                    .replace(/\n/g, '<br>') // Handle new lines
+                }
+            </div>
             <br>
             <button class="btn-delete" data-id="${postId}">🗑 Delete Post</button>
         `;
@@ -188,7 +138,7 @@ async function fetchPosts() {
         postsContainer.appendChild(postElement);
     });
 
-    // Attach event listeners to all delete buttons after posts are loaded
+    // Attach event listeners to all delete buttons
     document.querySelectorAll(".btn-delete").forEach(button => {
         button.addEventListener("click", () => {
             const postId = button.getAttribute("data-id");
@@ -197,19 +147,19 @@ async function fetchPosts() {
     });
 }
 
-
 // Call fetchPosts when the admin panel loads
 fetchPosts();
+
+// Delete post function
 async function deletePost(postId) {
     if (confirm("Are you sure you want to delete this post?")) {
         try {
             await deleteDoc(doc(db, "blogPosts", postId));
             alert("Post deleted successfully!");
-            fetchPosts(); // Refresh the post list
+            fetchPosts(); // Refresh post list
         } catch (error) {
             console.error("Error deleting post:", error);
             alert("Failed to delete post!");
         }
     }
 }
-

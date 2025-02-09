@@ -253,13 +253,15 @@
     
     <header>
         <h1>Blog Section</h1>
-        <a class="admin" href="admin/admin.html" >Admin-Login</a>
+        <a class="admin" href="admin/admin.html" target="_blank">Admin-Login</a>
         
     </header>
-    
     <section id="blog-container">
-        <div id="posts"></div>
+        <div id="posts">
+            <!-- Blog posts will be injected here -->
+        </div>
     </section>
+    
     
     <button id="scrollTop" onclick="scrollToTop()">
         <i class='bx bx-chevron-up'></i>
@@ -316,6 +318,12 @@
             }
         });
     </script>
-    <script src="blog.js" defer></script>
+
+
+
+   
+
+<script type="module" src="blog.js"></script>
+
 </body>
 </html>
