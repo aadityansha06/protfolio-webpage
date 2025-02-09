@@ -348,24 +348,11 @@ section{
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('pic/bg-image.jpg') no-repeat center center; /* Background image */
+    background: transparent; /* Background image */
     background-size: cover; /* Scales proportionally */
-    filter: brightness(0.15); /* Darkens the background */
-    z-index: -1; /* Places the background behind the content */
-    animation: moveBackground 10s linear infinite; /* Optional background animation */
+   
 }
 
-@keyframes moveBackground {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 50% 50%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
 
 .timeline-items {
     z-index: 1; /* Ensures the timeline is above the background */
