@@ -25,7 +25,7 @@ async function fetchBlogs() {
         const querySnapshot = await getDocs(collection(db, "blogPosts"));
 
         if (querySnapshot.empty) {
-            postsContainer.innerHTML = "<p>No blog posts available.</p>";
+            postsContainer.innerHTML = "<p>There's some issue with loading blog posts,<br><br>Please check your internet-connection or refresh the page</p>";
             return;
         }
 
