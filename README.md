@@ -23,11 +23,11 @@ Welcome to my **personal portfolio website**! This project showcases my skills, 
 ## 🚀 Installation & Usage
 1. Clone the repository:
    ```bash
-   git clone https://github.com/aadityansha06/protfolio-webpage.git
+   git clone https://github.com/aadityansha06/aadityansha06.github.io.git
    ```
 2. Open the project folder:
    ```bash
-   cd protfolio-webpage
+   cd aadityansha06.github.io
    ```
 3. Open `index.html` in your browser.
 
