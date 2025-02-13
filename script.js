@@ -1,10 +1,39 @@
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    const mainContent = document.getElementById('main-content');
-  
-    preloader.style.display = 'none';
-    mainContent.style.display = 'block';
-  });
+document.addEventListener("DOMContentLoaded", function () {
+  const preloader = document.getElementById("preloader");
+
+  // Minimum preloader duration (2 seconds)
+  const minDuration = 2000;
+  const startTime = Date.now();
+
+  function hidePreloader() {
+      preloader.style.transition = "opacity 0.5s ease-out";
+      preloader.style.opacity = "0";
+
+      setTimeout(() => {
+          preloader.style.display = "none";
+      }, 500);
+  }
+
+  function checkPageLoad() {
+      const elapsedTime = Date.now() - startTime;
+
+      if (document.readyState === "complete") {
+          if (elapsedTime >= minDuration) {
+              hidePreloader();
+          } else {
+              setTimeout(hidePreloader, minDuration - elapsedTime);
+          }
+      } else {
+          setTimeout(checkPageLoad, 500); // Keep checking every 500ms
+      }
+  }
+
+  setTimeout(checkPageLoad, minDuration); // Start checking after 2s
+});
+
+
+
+
 
 
   const cursor = document.getElementById('cursor');

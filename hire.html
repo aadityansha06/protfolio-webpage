@@ -61,21 +61,93 @@
         color: rgba(255, 0, 0, 0.9);
     }
     #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black; /* Background color while loading */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999; /* Ensure it appears above other elements */
-        }
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
 
-        #loader {
-            width: 30%; /* Adjust size as needed */
-        }
+/* Loader container */
+.cardloder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* "Loading" text */
+.loader p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4b4b4b;
+    margin-left:2rem; /* Adjust spacing */
+    display: inline-block;
+    line-height: 40px; /* Match words' height */
+}
+
+/* Animated words */
+.words {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 140px; /* Increased for better spacing */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Individual words */
+.word {
+    color: rgba(255, 0, 0, 0.9);
+    font-size: 1.5rem;
+    font-weight: 500;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center; /* Center align */
+    opacity: 0;
+    transform: translateY(100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icon adjustments */
+.word i {
+    margin-left: 8px; /* Fine-tuned spacing */
+    font-size: 1.5rem; /* Adjusted to match text */
+}
+
+/* Animation */
+@keyframes moveUp {
+    0% { opacity: 0; transform: translateY(100%); }
+    5% { opacity: 1; transform: translateY(0); }
+    25% { opacity: 1; transform: translateY(0); }
+    30% { opacity: 0; transform: translateY(-100%); }
+    100% { opacity: 0; transform: translateY(-100%); }
+}
+
+/* Apply animation */
+.word {
+    animation: moveUp 2s infinite ease-in-out;
+}
+
+/* Stagger animation */
+.word:nth-child(1) { animation-delay: 0s; }
+.word:nth-child(2) { animation-delay: 0.4s; }
+.word:nth-child(3) { animation-delay: 0.8s; }
+.word:nth-child(4) { animation-delay: 1.2s; }
+.word:nth-child(5) { animation-delay: 1.6s; }
+
+
         .card {
     opacity: 0;
     transform: translateY(50px);
@@ -96,9 +168,10 @@
     }
 
     .card {
-        background-color: #2c2c2c;
+       
         border-radius: 10px;
         width: 300px;
+        
         padding: 20px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
@@ -183,17 +256,34 @@
         margin-bottom: 20px;
     }
 
-    .cart input, .cart textarea {
+     .cart textarea {
+        
         width: 100%;
         padding: 12px;
         margin: 10px 0;
-        border-radius: 5px;
-        border: 1px solid #444;
-        background-color: #333;
+        background: none;
+     border: none;
+     outline: none;
+     box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+     color: #fff;
         color: #ddd;
         font-size: 16px;
     }
+    .cart input{
+         
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+     background: none;
+     border: none;
+     outline: none;
+  
+    font-size: 16px;
+     border-radius: 9999px;
+     box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+     color: #fff;
 
+    }
     .cart textarea {
         height: 150px;
     }
@@ -217,6 +307,68 @@
         background-color: #ff1a1a;
         transform: translateY(-2px);
     }
+    cont {
+ display: flex;
+ align-items: center;
+ transform: scale(1);
+}
+
+input[type="checkbox"] {
+ height: 1.7rem;
+ width: 1.7rem;
+ margin: 5px;
+ display: inline-block;
+ appearance: none;
+ position: relative;
+ background-color:#fff;
+ border-radius: 15%;
+ cursor: pointer;
+ overflow: hidden;
+}
+
+input[type="checkbox"]::after {
+ content: '';
+ display: block;
+ height: 0.9rem;
+ width: .4rem;
+ border-bottom: .31rem solid #a0ffe7;
+ border-right: .31rem solid #a0ffe7;
+ opacity: 0;
+ transform: rotate(45deg) translate(-50%, -50%);
+ position: absolute;
+ top: 45%;
+ left: 21%;
+ transition: .25s ease;
+}
+
+input[type="checkbox"]::before {
+ content: '';
+ display: block;
+ height: 0;
+ width: 0;
+ background-color:rgba(255,0,0,0.9);
+ border-radius: 50%;
+ opacity: .5;
+ transform: translate(-50%, -50%);
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transition: .3s ease;
+}
+
+input[type="checkbox"]:checked::before {
+ height: 130%;
+ width: 130%;
+ opacity: 100%;
+}
+
+input[type="checkbox"]:checked::after {
+ opacity: 100%;
+}
+
+span {
+ font-size: 2rem;
+}
 
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -381,12 +533,29 @@
                 align-items: center;
             }
         }
+
+
 </style>
 </head>
 <body>
     <div id="preloader">
-        <img src="pic/load.gif" alt="Loading..." id="loader">
+        <!-- From Uiverse.io by kennyotsu --> 
+  <div class="cardloder">
+      <div class="loader">
+        <p>Loading...</p>
+        <div class="words">
+          <span class="word">crafted</span>
+          <span class="word">on</span>
+          <span class="word"><i class='bx bx-laptop'></i></span>
+          <span class="word">with</span>
+          <span class="word">❤️</span>
+          
+        </div>
       </div>
+    </div>
+    
+        </div>
+    
     <section class="hire-me">
         <h1>Hire Me</h1>
        <section class="filters">
@@ -565,7 +734,7 @@
             
     
         <div class="cart">
-            <h2>Cart</h2>
+            <h2><i class='bx bx-cart'></i> Cart</h2>
             <!-- Add this inside your cart section to display total price -->
 <div id="total-price">Total Price: ₹0.00</div>
 
@@ -576,9 +745,9 @@
                 <input type="text" name="social" placeholder="Social Handle">
                 <textarea name="message" placeholder="Any suggestions or bargaining?"></textarea>
                 <label>
-                    Customization Required (if-yes:check-box) <input type="checkbox" name="customization" value="yes">
+                    Customization Required (if-yes:check-box)<label class="cont"> <input type="checkbox" name="customization" value="yes"></label>
                 </label>
-                <button type="submit" disabled>Place Order</button>
+                <button type="submit" class="add-to-cart"disabled>Place Order</button>
             </form>
         </div>
     </section>
@@ -614,10 +783,42 @@
 
     </footer>
 <script>
-    window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            preloader.style.display = 'none';
-        });
+     document.addEventListener("DOMContentLoaded", function () {
+  const preloader = document.getElementById("preloader");
+
+  // Minimum preloader duration (2 seconds)
+  const minDuration = 2000;
+  const startTime = Date.now();
+
+  function hidePreloader() {
+      preloader.style.transition = "opacity 0.5s ease-out";
+      preloader.style.opacity = "0";
+
+      setTimeout(() => {
+          preloader.style.display = "none";
+      }, 500);
+  }
+
+  function checkPageLoad() {
+      const elapsedTime = Date.now() - startTime;
+
+      if (document.readyState === "complete") {
+          if (elapsedTime >= minDuration) {
+              hidePreloader();
+          } else {
+              setTimeout(hidePreloader, minDuration - elapsedTime);
+          }
+      } else {
+          setTimeout(checkPageLoad, 500); // Keep checking every 500ms
+      }
+  }
+
+  setTimeout(checkPageLoad, minDuration); // Start checking after 2s
+});
+
+
+
+
         document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll(".card");
 

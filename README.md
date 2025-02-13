@@ -10,7 +10,7 @@ Welcome to my **personal portfolio website**! This project showcases my skills, 
 - **Dark Theme UI** for a modern look 🌙  
 - **Responsive Design** (Works on all devices)  
 - **Smooth Animations & Transitions** 🎨  
-- **AI Chat-Bot** to help you with your queries ![Chatbot] <img width="28" height="28" src="https://img.icons8.com/fluency/48/chatbot--v1.png" alt="chatbot--v1"/> 
+- **AI Chat-Bot** to help you with your queries  <img width="28" height="28" src="https://img.icons8.com/fluency/48/chatbot--v1.png" alt="chatbot--v1"/> 
 - **Admin Dashboard** for managing blog content dynamically ✍️  
 - **Contact Form** to get in touch easily  
 - **Donation Section** to inspire me to add more features and help you create a UPI payment gateway  
@@ -32,8 +32,20 @@ This portfolio includes an **admin dashboard** where authenticated users can:
 2. Only authenticated users can modify blog content 🔐  
 3. The changes are instantly reflected on the website ⚡  
 
-> 🔑 **Note:** Only authorized users can access the **admin panel** to manage content.  
+> 🔑 **Note:** Only authorized users can access the **admin panel** to manage content.
+>
+> <br>
+ <h2>🎨  💼   'Hire Me' Page Features</h2>
 
+1.Animated Card Layout showcasing different website types & pricing 💻
+
+2.Dynamic Pricing (Static Websites: ₹1000, Dynamic Websites: ₹1800, additional charges for custom features)
+
+3.Interactive Add to Cart & Place Order Buttons 🛒
+
+4.Smooth Scroll Animations for an engaging user experience
+
+5.Form Submission via Formspree ✉️ <br>
 ## 🚀 **Installation & Usage**  
 1. Clone the repository:  
    ```bash
