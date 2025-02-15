@@ -1494,9 +1494,12 @@ section{
         margin-left: 10rem;
         /* text-align: left; */
     }
-    #loader {
-        width: 50%; /* Adjust size as needed */
-      }
+    .loader p {
+        font-size: 2rem;
+    }
+    .word{
+        font-size: 2rem;
+    }
     .home-content span{
         font-size: 75%;
     }

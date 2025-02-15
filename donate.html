@@ -427,7 +427,8 @@ function redirectToUPI() {
     }
 
     const upiId = "pkumariverma42@okaxis";  // Replace with your UPI ID
-    const upiLink = `upi://pay?pa=${upiId}&pn=${name}&mc=0000&tid=123456&url=https://aadityansha06.github.io/protfolio-webpage/donate.html&am=${amount}&cu=INR`;
+    const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+
 
     // Check if running on a mobile device
     if (isMobile()) {
