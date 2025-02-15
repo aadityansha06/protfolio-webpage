@@ -1486,19 +1486,20 @@ section{
 
 
  @media(max-width:425px){
-    .home-content h1{
-        font-size: rem;
+    html{
+        overflow-x: hidden;
     }
+   
     .home-content {
         
         margin-left: 10rem;
         /* text-align: left; */
     }
     .loader p {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     .word{
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     .home-content span{
         font-size: 75%;
