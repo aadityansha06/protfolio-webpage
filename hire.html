@@ -931,6 +931,18 @@ span {
     // Initialize Cart UI
     updateCart();
 });
+
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="ZYSyWgUFDQEiJemJHE2S6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+
+document.getElementById('faq-link').addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent default link behavior
+
+  // Check if Chatbase is initialized
+  if (window.chatbase && typeof window.chatbase === 'function') {
+      // Trigger the chat window to open
+      window.chatbase('open');
+  }
+});
 </script>
 
 </body>

@@ -1485,7 +1485,7 @@ section{
 
 
 
- @media(max-width:425px){
+ @media(max-width:430px){
     html{
         overflow-x: hidden;
     }
@@ -1589,7 +1589,7 @@ section{
         width: 15px;
     }
     .timeline-content {
-        width: 85%;  /* Reduce width */
+        width: 70.2%;  /* Reduce width */
         max-width: 250px; /* Set a maximum width */
         margin: 10px 0;
         padding: 10px;
@@ -1663,6 +1663,9 @@ section{
     .text-animation span::after{
         top:2px;
     
+    }
+    .timeline-item:nth-child(even) {
+        padding-left: calc(0% + 1px);
     }
 
 
