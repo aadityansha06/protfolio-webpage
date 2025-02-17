@@ -36,32 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  const cursor = document.getElementById('cursor');
-const trail = document.getElementById('trail');
-
-// Update cursor and trail positions on mousemove
-document.addEventListener('mousemove', (e) => {
-  const x = e.clientX;
-  const y = e.clientY;
-
-  // Update cursor position
-  cursor.style.transform = `translate(${x}px, ${y}px)`;
-
-  // Update trail position
-  trail.style.transform = `translate(${x}px, ${y}px)`;
-});
-
-// Ensure the cursor hides when not moving
-document.addEventListener('mouseleave', () => {
-  cursor.style.opacity = '0';
-  trail.style.opacity = '0';
-});
-
-document.addEventListener('mouseenter', () => {
-  cursor.style.opacity = '1';
-  trail.style.opacity = '1';
-});
-
+ 
 
 
         // skill section
@@ -175,14 +150,6 @@ document.getElementById('faq-link').addEventListener('click', function(event) {
       window.chatbase('open');
   }
 });
-
-
-
-
-
-
-
-
 
 
 

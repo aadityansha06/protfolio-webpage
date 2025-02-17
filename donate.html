@@ -26,6 +26,17 @@
             font-family:"Lexend Giga", serif;
         }
 
+        ::selection {
+    background-color: red;
+    opacity: 0.4;
+    color: white; /* optional: to make text readable */
+  }
+  
+  ::-moz-selection { /* For Firefox */
+    background: red;
+    opacity: 0.4;
+    color: white;
+  }
        /* General reset and preloader styling */
 #preloader {
     position: fixed;

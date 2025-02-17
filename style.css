@@ -241,6 +241,7 @@ section{
 }
 
 .home-img {
+    background: transparent;
     flex: 1; /* Let the image take up available space */
     display: flex;
     justify-content: flex-end; /* Align the image to the right */
@@ -251,7 +252,7 @@ section{
     margin-right: 5vh;
     width: 45vh; /* Set the desired width */
     height: 45vh; /* Keep height same as width for a perfect circle */
-    border-radius: 50%; /* Makes the image circular */
+    border-radius: 80%; /* Makes the image circular */
     box-shadow: 0 0 15px var(--main-color); /* Add a glow effect */
     object-fit: cover; /* Ensures the image scales properly */
     transition: transform ease 0.3s;
@@ -1686,3 +1687,19 @@ section{
         margin-top: 10rem;
     }
  }
+
+
+
+ ::selection {
+    background-color: red;
+    opacity: 0.4;
+    color: white; /* optional: to make text readable */
+  }
+  
+  ::-moz-selection { /* For Firefox */
+    background: red;
+    opacity: 0.4;
+    color: white;
+  }
+
+
