@@ -1513,6 +1513,10 @@ section{
         top:4px;
         right: 0px;
     }
+    .timeline-date {
+        margin: 6px 25px 0 0px;
+        font-size: 1.7rem;
+    }
 
     
     .Skills{
@@ -1594,13 +1598,11 @@ section{
         max-width: 250px; /* Set a maximum width */
         margin: 10px 0;
         padding: 10px;
-        margin-left: 7rem;
+        margin-left: 6rem;
         padding-right: 6rem;
         border-radius: 2rem;
     }
-    .timeline-date {
-        margin: 6px 25px 0 60px;
-    }
+   
 
     .timeline-content h3 {
         font-size: 16px;
@@ -1610,6 +1612,7 @@ section{
     }
 
     .timeline-content p {
+    
         font-size: 14px;
     }
     .contact.in-view::before{
