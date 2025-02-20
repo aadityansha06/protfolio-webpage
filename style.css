@@ -239,29 +239,17 @@ section{
     margin-top: 1.5rem;
     line-height: 1;
 }
-
-.home-img {
-    background: transparent;
-    flex: 1; /* Let the image take up available space */
+#model {
+    position: relative;
+    width: 45vw; /* Adjusted size */
+    height: 60vh;
     display: flex;
-    justify-content: flex-end; /* Align the image to the right */
+    justify-content: center;
     align-items: center;
+    background: transparent;
+    right: 0;
 }
 
-.home-img img {
-    margin-right: 5vh;
-    width: 45vh; /* Set the desired width */
-    height: 45vh; /* Keep height same as width for a perfect circle */
-    border-radius: 80%; /* Makes the image circular */
-    box-shadow: 0 0 15px var(--main-color); /* Add a glow effect */
-    object-fit: cover; /* Ensures the image scales properly */
-    transition: transform ease 0.3s;
-}
-.home-img img:hover{
-    cursor: pointer;
-    transform: scale(1.3);
-    box-shadow: 0 0 35px var(--main-color);
-}
 .home-content p{
     font-size: 1.5rem;
     font-weight: 500;
