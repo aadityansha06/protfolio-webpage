@@ -294,6 +294,7 @@ let scene, camera, renderer, pcModel;
 let rotationX = 0, rotationY = 0;
 let targetRotationX = 0, targetRotationY = 0;
 let isMouseDown = false, lastMouseX = 0, lastMouseY = 0;
+let isMobile = window.innerWidth <= 768;
 
 function init() {
     scene = new THREE.Scene();
@@ -302,30 +303,33 @@ function init() {
 
     renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping; // Better contrast
     document.getElementById('model').appendChild(renderer.domElement);
 
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+    // Lighting - Adjusted for better visibility
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1); // Increased brightness
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(1, 1, 1);
     scene.add(directionalLight);
 
-    const spotLight = new THREE.SpotLight(0xffffff, 2);
-    spotLight.position.set(3, 4, 4);
-    spotLight.castShadow = true;
-    scene.add(spotLight);
-
-    // Create video element
+    // Video for screen
     const video = document.createElement("video");
-    video.src = "pic/video-main.mp4"; // Change to your video file path
+    video.src = "pic/video-main.mp4";
     video.loop = true;
-    video.muted = true; // Mute to allow autoplay
-    video.play();
+    video.muted = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.crossOrigin = "anonymous";
 
-    // Create video texture
+    video.play().catch(() => console.log("Autoplay blocked, waiting for user interaction..."));
+
+    // High-quality video texture with better contrast
     const videoTexture = new THREE.VideoTexture(video);
+    videoTexture.colorSpace = THREE.SRGBColorSpace;
+    videoTexture.encoding = THREE.sRGBEncoding;
     videoTexture.minFilter = THREE.LinearFilter;
     videoTexture.magFilter = THREE.LinearFilter;
     videoTexture.format = THREE.RGBAFormat;
@@ -339,11 +343,10 @@ function init() {
             if (child.isMesh && child.name.toLowerCase().includes("screen")) {
                 child.material = new THREE.MeshBasicMaterial({ 
                     map: videoTexture, 
-                    emissive: 0xffffff, // Make it glow slightly
+                    emissive: 0xffffff,
                     emissiveMap: videoTexture,
-                    emissiveIntensity: 1.5 
+                   
                 });
-                child.material.needsUpdate = true;
             }
         });
 
@@ -352,6 +355,7 @@ function init() {
         scene.add(pcModel);
     });
 
+    setupControls();
     animate();
 }
 
@@ -359,94 +363,103 @@ function init() {
 function updateModelScale() {
     if (!pcModel) return;
 
-    let scaleFactor = 0.7; 
-
+    let scaleFactor = 0.7;
     if (window.innerWidth <= 768) {
-        scaleFactor = 0.5; 
+        scaleFactor = 0.5;
         pcModel.position.set(3.6, -1, 0);
     }
     if (window.innerWidth <= 480) {
         scaleFactor = 0.33;
         pcModel.position.set(3.3, -1, 0.5);
     }
-    if (window.innerWidth <= 375) {
-        scaleFactor = 0.33;
-        pcModel.position.set(3.3, -0.5, 0.5);
-    }
     pcModel.scale.set(scaleFactor, scaleFactor, scaleFactor);
 }
 
 // Handle window resizing
 window.addEventListener("resize", () => {
+    isMobile = window.innerWidth <= 768;
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     updateModelScale();
 });
 
-// Mouse and touch rotation control
-document.addEventListener("mousedown", (event) => {
+// Setup controls for rotation based on device
+function setupControls() {
+    document.addEventListener("mousedown", onMouseDown);
+    document.addEventListener("mouseup", onMouseUp);
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("touchstart", onTouchStart, { passive: false });
+    document.addEventListener("touchmove", onTouchMove, { passive: false });
+    document.addEventListener("touchend", onTouchEnd);
+}
+
+// Mouse rotation (PC: Full Rotation)
+function onMouseDown(event) {
     isMouseDown = true;
     lastMouseX = event.clientX;
     lastMouseY = event.clientY;
-});
+}
 
-document.addEventListener("mouseup", () => {
+function onMouseUp() {
     isMouseDown = false;
-});
+}
 
-document.addEventListener("mousemove", (event) => {
+function onMouseMove(event) {
     if (!isMouseDown) return;
-
     let deltaX = event.clientX - lastMouseX;
     let deltaY = event.clientY - lastMouseY;
 
-    targetRotationX += deltaX * 0.005;
-    targetRotationY += deltaY * 0.005;
+    if (isMobile) {
+        // Mobile: Only rotate left-right
+        targetRotationX += deltaX * 0.005;
+    } else {
+        // PC: Rotate both X & Y
+        targetRotationX += deltaX * 0.005;
+        targetRotationY += deltaY * 0.005;
+    }
 
     lastMouseX = event.clientX;
     lastMouseY = event.clientY;
-});
+}
 
-document.addEventListener("touchstart", (event) => {
+// Touch rotation (Mobile: Only Left-Right Movement)
+function onTouchStart(event) {
     isMouseDown = true;
     lastMouseX = event.touches[0].clientX;
-    lastMouseY = event.touches[0].clientY;
-});
+}
 
-document.addEventListener("touchend", () => {
-    isMouseDown = false;
-});
-
-document.addEventListener("touchmove", (event) => {
+function onTouchMove(event) {
     if (!isMouseDown) return;
-
     let deltaX = event.touches[0].clientX - lastMouseX;
-    let deltaY = event.touches[0].clientY - lastMouseY;
 
+    // Mobile: Only left-right rotation
     targetRotationX += deltaX * 0.005;
-    targetRotationY += deltaY * 0.005;
 
     lastMouseX = event.touches[0].clientX;
-    lastMouseY = event.touches[0].clientY;
-});
+    event.preventDefault();
+}
+
+function onTouchEnd() {
+    isMouseDown = false;
+}
 
 function animate() {
     requestAnimationFrame(animate);
-
     rotationX += (targetRotationX - rotationX) * 0.1;
     rotationY += (targetRotationY - rotationY) * 0.1;
 
     if (pcModel) {
         pcModel.rotation.y = rotationX;
-        pcModel.rotation.x = rotationY;
+        if (!isMobile) {
+            pcModel.rotation.x = rotationY;
+        }
     }
 
     renderer.render(scene, camera);
 }
 
 init();
-
 
                   
                       </script>
