@@ -350,11 +350,11 @@ function updateModelScale() {
     }
     if (window.innerWidth <= 480) {
         scaleFactor = 0.33;
-        pcModel.position.set(3.3, -1, 0); // Adjust for mobile devices
+        pcModel.position.set(3.3, -1, 0.5); // Adjust for mobile devices
     }
     if (window.innerWidth <= 375) {
         scaleFactor = 0.33;
-        pcModel.position.set(3.3, -0.5, 0); // Adjust for mobile devices
+        pcModel.position.set(3.3, -0.5, 0.5); // Adjust for mobile devices
     }
     pcModel.scale.set(scaleFactor, scaleFactor, scaleFactor);
 }
@@ -390,6 +390,29 @@ document.addEventListener("mousemove", (event) => {
     lastMouseX = event.clientX;
     lastMouseY = event.clientY;
 });
+document.addEventListener("touchstart", (event) => {
+    isMouseDown = true;
+    lastMouseX = event.touches[0].clientX;
+    lastMouseY = event.touches[0].clientY;
+});
+
+document.addEventListener("touchend", () => {
+    isMouseDown = false;
+});
+
+document.addEventListener("touchmove", (event) => {
+    if (!isMouseDown) return;
+
+    let deltaX = event.touches[0].clientX - lastMouseX;
+    let deltaY = event.touches[0].clientY - lastMouseY;
+
+    targetRotationX += deltaX * 0.005;
+    targetRotationY += deltaY * 0.005;
+
+    lastMouseX = event.touches[0].clientX;
+    lastMouseY = event.touches[0].clientY;
+});
+
 
 function animate() {
     requestAnimationFrame(animate);
