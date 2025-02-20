@@ -240,6 +240,7 @@ section{
     line-height: 1;
 }
 #model {
+    z-index: -1;
     position: relative;
     width: 45vw; /* Adjusted size */
     height: 60vh;
@@ -248,6 +249,7 @@ section{
     align-items: center;
     background: transparent;
     right: 0;
+    
 }
 
 .home-content p{
@@ -272,6 +274,7 @@ section{
     transition: 0.3s ease-in-out;
 
 }
+
 .social-icon a:hover{
     color: #ffff;
     cursor: pointer;

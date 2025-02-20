@@ -133,7 +133,8 @@
                 <a href="#contact" class="btn">Contact</a>
             </div>
         </div>
-        <div class="home-img" id="model">
+    <div class="home-img" id="model">
+       
   
         </div>
     </section>
@@ -289,7 +290,7 @@
 
                         
       <script>
-  let scene, camera, renderer, pcModel;
+let scene, camera, renderer, pcModel;
 let rotationX = 0, rotationY = 0;
 let targetRotationX = 0, targetRotationY = 0;
 let isMouseDown = false, lastMouseX = 0, lastMouseY = 0;
@@ -304,34 +305,50 @@ function init() {
     document.getElementById('model').appendChild(renderer.domElement);
 
     // Lighting
-    const light = new THREE.AmbientLight(0xffffff, 1);
-    scene.add(light);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
     directionalLight.position.set(1, 1, 1);
     scene.add(directionalLight);
 
+    const spotLight = new THREE.SpotLight(0xffffff, 2);
+    spotLight.position.set(3, 4, 4);
+    spotLight.castShadow = true;
+    scene.add(spotLight);
+
+    // Create video element
+    const video = document.createElement("video");
+    video.src = "pic/video-main.mp4"; // Change to your video file path
+    video.loop = true;
+    video.muted = true; // Mute to allow autoplay
+    video.play();
+
+    // Create video texture
+    const videoTexture = new THREE.VideoTexture(video);
+    videoTexture.minFilter = THREE.LinearFilter;
+    videoTexture.magFilter = THREE.LinearFilter;
+    videoTexture.format = THREE.RGBAFormat;
+
     // Load 3D Model
     const loader = new THREE.GLTFLoader();
-    loader.load('pic/programmer_desktop_3d_pc.glb', function (gltf) {
+    loader.load("pic/programmer_desktop_3d_pc.glb", function (gltf) {
         pcModel = gltf.scene;
-
-        // Load wallpaper texture
-        const textureLoader = new THREE.TextureLoader();
-        const wallpaperTexture = textureLoader.load('pic/Screenshot-wall.png');
 
         pcModel.traverse((child) => {
             if (child.isMesh && child.name.toLowerCase().includes("screen")) {
-                child.material = new THREE.MeshBasicMaterial({ map: wallpaperTexture });
+                child.material = new THREE.MeshBasicMaterial({ 
+                    map: videoTexture, 
+                    emissive: 0xffffff, // Make it glow slightly
+                    emissiveMap: videoTexture,
+                    emissiveIntensity: 1.5 
+                });
                 child.material.needsUpdate = true;
             }
         });
 
-        // Adjust position
         pcModel.position.set(3.6, 0, 0);
-
-        // Dynamically adjust model scale
         updateModelScale();
-
         scene.add(pcModel);
     });
 
@@ -342,32 +359,32 @@ function init() {
 function updateModelScale() {
     if (!pcModel) return;
 
-    let scaleFactor = 0.7; // Default for large screens
+    let scaleFactor = 0.7; 
 
     if (window.innerWidth <= 768) {
-        scaleFactor = 0.5; // Adjust for tablets
+        scaleFactor = 0.5; 
         pcModel.position.set(3.6, -1, 0);
     }
     if (window.innerWidth <= 480) {
         scaleFactor = 0.33;
-        pcModel.position.set(3.3, -1, 0.5); // Adjust for mobile devices
+        pcModel.position.set(3.3, -1, 0.5);
     }
     if (window.innerWidth <= 375) {
         scaleFactor = 0.33;
-        pcModel.position.set(3.3, -0.5, 0.5); // Adjust for mobile devices
+        pcModel.position.set(3.3, -0.5, 0.5);
     }
     pcModel.scale.set(scaleFactor, scaleFactor, scaleFactor);
 }
 
 // Handle window resizing
-window.addEventListener('resize', () => {
+window.addEventListener("resize", () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    updateModelScale(); // Update model scale on resize
+    updateModelScale();
 });
 
-// Mouse control for rotation
+// Mouse and touch rotation control
 document.addEventListener("mousedown", (event) => {
     isMouseDown = true;
     lastMouseX = event.clientX;
@@ -383,13 +400,14 @@ document.addEventListener("mousemove", (event) => {
 
     let deltaX = event.clientX - lastMouseX;
     let deltaY = event.clientY - lastMouseY;
-    
+
     targetRotationX += deltaX * 0.005;
     targetRotationY += deltaY * 0.005;
 
     lastMouseX = event.clientX;
     lastMouseY = event.clientY;
 });
+
 document.addEventListener("touchstart", (event) => {
     isMouseDown = true;
     lastMouseX = event.touches[0].clientX;
@@ -413,11 +431,9 @@ document.addEventListener("touchmove", (event) => {
     lastMouseY = event.touches[0].clientY;
 });
 
-
 function animate() {
     requestAnimationFrame(animate);
 
-    // Smooth movement
     rotationX += (targetRotationX - rotationX) * 0.1;
     rotationY += (targetRotationY - rotationY) * 0.1;
 
@@ -430,6 +446,7 @@ function animate() {
 }
 
 init();
+
 
                   
                       </script>
