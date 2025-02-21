@@ -1,0 +1,28 @@
+* {
+    cursor: none;
+}
+
+/* Outer Circle Cursor */
+.cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: transform 0.1s linear;
+    z-index: 9999;
+}
+
+/* Inner Dot */
+.cursor-dot {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.1s linear;
+    z-index: 9999;
+}
