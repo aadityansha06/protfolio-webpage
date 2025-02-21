@@ -153,9 +153,12 @@ body{
     z-index: 999;
     position: relative;
     font-size: 1.5rem;
+    font-family: "Offside", serif;
+    font-weight: 400;
     color: #ffff;
-    margin-left: 4rem;
-    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-right:1rem;
+    letter-spacing:0.2em;
     font-weight: 600;
     text-decoration: none;
     border-bottom: 3px solid transparent;
@@ -654,6 +657,9 @@ section{
   
 
 .contact h2 {
+    font-family: "Abril Fatface", serif;
+    font-weight: 500;
+    letter-spacing:0.2em;
     text-align: center;
     font-size: 3.5rem;
     color: #fff;
@@ -661,6 +667,9 @@ section{
   }
   
   .contact h2 span {
+    font-family: "Abril Fatface", serif;
+    font-weight: 500;
+    letter-spacing:0.2em;
     color: var(--main-color); /* Red glow effect for "Me" */
     text-shadow: 0 0 10px var(--main-color),
                  0 0 20px var(--main-color),
@@ -801,10 +810,12 @@ section{
 }
 
 .footer .list a {
+    font-family: "Offside", serif;
+    font-weight: 400;
     color: #ffff; /* Default color */
     text-decoration: none; /* Remove underline */
     font-size: 1.9rem;
-    font-weight: 700;
+    
     position: relative; /* Position for the pseudo-element */
     padding: 0.2rem 0; /* Some padding for the underline effect */
     transition: color 0.3s ease; /* Smooth transition for text color */
