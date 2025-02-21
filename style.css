@@ -990,11 +990,14 @@ section{
     .home {
        flex-direction: column-reverse;
     }
-    .home-content h3 {
-       font-size: 2.4rem;
-    }
+ 
+        .home-content h3 {
+            margin-left: 14rem;
+            font-size: 3.6rem;
+        }
+    
     .home-content h1 {
-       font-size: 8rem;
+       font-size: 6rem;
        margin-top: 3rem;
     }
     .home-content p {
@@ -1056,6 +1059,7 @@ section{
         margin-left: 10rem;
         /* text-align: left; */
     }
+   
     .loader p {
         font-size: 2.5rem;
     }
@@ -1065,10 +1069,7 @@ section{
     .home-content span{
         font-size: 75%;
     }
-    .home-img img{
-        margin-top: 15vh;
-        margin-left: 12vh;
-    }
+    
     .text-animation span::after{
         top:4px;
         right: 0px;
@@ -1087,7 +1088,11 @@ section{
               margin: 2rem 1rem;
           padding: 1rem;
     }
-    
+    .home-content h3 {
+        margin-left: 5rem;
+        margin-top: 2rem;
+        font-size: 3.6rem;
+    }
     .contact {
         padding: 4rem 4rem 1rem 5rem;
     }

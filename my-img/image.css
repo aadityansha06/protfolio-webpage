@@ -14,6 +14,13 @@ body {
     position: relative;
     overflow-y: auto;
 }
+html, body {
+    overflow-x: hidden;
+}
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+}
 
 /* Centered Dynamic Glow */
 body::before {
@@ -185,43 +192,23 @@ img {
     }
 }
 
-@media(max-width:425px){
-    h1 {
-        width: 100%;
-        font-weight: 600;
-        margin-left: 15rem;
-    }
-   
-        .gallery-item.visible.left {
-            opacity: 1;
-            transform: translateX(-20%) translateY(-20px);
-        }
-        .gallery-item.visible.right {
-            opacity: 1;
-            transform: translateX(60%) translateY(-5%);
-        }
-        .footer {
-            background: transparent;
-            padding: 30px 20px;
-            margin-left: 6rem;
-            text-align: center;
-            border-top: 2px solid rgba(49, 49, 49, 0.9);
-        }
-    
-}
-@media(max-width:375px){
+@media (max-width: 450px) {
     .gallery-item.visible.left {
-        opacity: 1;
-        transform: translateX(-6%) translateY(-20px);
+        transform: translateX(-15%) translateY(-10px); /* Even smaller shift */
     }
     .gallery-item.visible.right {
-        opacity: 1;
-        transform: translateX(50%) translateY(-5%);
+        transform: translateX(15%) translateY(-10px);
     }
-    
-
 }
 
+@media (max-width: 375px) {
+    .gallery-item.visible.left {
+        transform: translateX(-10%) translateY(-10px);
+    }
+    .gallery-item.visible.right {
+        transform: translateX(10%) translateY(-10px);
+    }
+}
 
 
 .footer {
